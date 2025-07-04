@@ -62,6 +62,4 @@ public class Cuadrado {
 		sc.close();
 	}
 
-	}
-
 }
