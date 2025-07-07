@@ -1,6 +1,6 @@
 /*
  * 9. Pintar el menu hasta que se puse la opción de salir. 
-Elige una opción:
+	Elige una opción:
 	1. Pintar Cuadrado
 	2. Validar email
 	3. Añadir Alumno
@@ -12,6 +12,8 @@ Por ejemplo si el tamaño es 4:
 		*  *
 		****
  * */
+package es.cursojava.inicio.ejercicios.condicionales;
+
 import java.util.Scanner;
 public class Cuadrado {
 	public static void main(String[] args) {
@@ -19,15 +21,15 @@ public class Cuadrado {
 		int opcion;
 		do {
 			System.out.println("\n ------Elige una opción: -----");
-			System.out.println("1.Pintar Cuadrado ");
-			System.out.println("2.Validar email : ");
-			System.out.println("3.Añadir Alumno : ");
-			System.out.println("4.Salir");
+			System.out.println("1.Pintar Cuadrado: ");
+			System.out.println("2.Validar email: ");
+			System.out.println("3.Añadir Alumno: ");
+			System.out.println("4.Salir.");
 			System.out.print("Opción: ");
 			opcion = sc.nextInt();
 			switch (opcion) {
 			case 1:
-				System.out.println("Introduce el tamaño del cuadrado: ");
+				System.out.print("Introduce el tamaño del cuadrado: ");
 				int tamanio = sc.nextInt();
 				for (int i = 0; i < tamanio; i++) {
 					for (int j = 0; j < tamanio; j++) {
@@ -38,15 +40,14 @@ public class Cuadrado {
 						}
 					}
 					System.out.println("");
-				}
-				 
-	        
+				}				 	   
 				break;
 			case 2:
 				break;
 			case 3:
 				break;
 			case 4:
+				System.out.println("Saliendo del programa...");
 				break;
 			default:
 				System.out.println("Opción incorrecta, inténtalo de nuevo.");
