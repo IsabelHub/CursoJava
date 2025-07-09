@@ -1,4 +1,10 @@
 package es.cursojava.inicio.strings;
+/*
+ * Ejercicio 1
+==============================
+Escribe un programa que reciba un String y devuelva el texto invertido.
+
+*/
 
 public class Invertido {
 	public static void main(String[] args) {
