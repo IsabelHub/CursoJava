@@ -17,7 +17,6 @@ public class ValidarEmail {
 
 	public static void main(String[] args) {
 		
-
 		Scanner sc = new Scanner(System.in);
 
 		System.out.print("Introduce mail: ");
@@ -26,10 +25,8 @@ public class ValidarEmail {
 		int contadorAt=0;
 		String sumaCaracter="";
 		String caracterPrevio="";
-		
-		
+			
 //		 boolean contieneEspacio = false;
-//
 //	        for (int i = 0; i < mail.length(); i++) {
 //	            char c = mail.charAt(i);
 //	            if (c == ' ') {
@@ -39,7 +36,6 @@ public class ValidarEmail {
 //	                contadorAt++;
 //	            }
 //	        }
-//
 //	        if (contieneEspacio) {
 //	            System.out.println("Error: El correo contiene espacios en blanco.");
 //	        } 
@@ -47,14 +43,15 @@ public class ValidarEmail {
 //	            System.out.println("Error: El correo contiene más de un '@'.");
 //	        } else {
 //	            System.out.println("Correo válido: " + mail);
-//	        }
-//		
+//	        }		
 		if(mail.contains(" "))
 		{
 			System.out.println("Error: El correo contiene espacios en blanco.");
 		} else if (!mail.contains("@") || mail.indexOf('@') != mail.lastIndexOf('@'))
 		{
 			System.out.println("El correo debe contener exactamente un '@'.");
+		}else if(!mail.substring(mail.indexOf('@')).contains(".")) {
+			System.out.println("Al menos debe haber un '.' despues de la @");
 		}
 	}
 
