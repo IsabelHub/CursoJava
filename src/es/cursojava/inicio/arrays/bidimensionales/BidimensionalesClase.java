@@ -44,11 +44,13 @@ public class BidimensionalesClase {
 				boolean encontrado = false;
 				for (int i = 0; i < aulas.length; i++) {
 					for (int j = 0; j < aulas[i].length; j++) {
-						if (aulas[i][j].contains(cadenaBuscar)) {
-							System.out.print("el alumno de nombre: " + cadenaBuscar + " esta en el aula: " + (i + 1) + ", puesto " + (j + 1) + ": ");
-							encontrado=true;
-						
-							
+						if (aulas[i][j]==null) {
+							System.out.print("el alumno de nombre: " + cadenaBuscar + " no existe");
+							encontrado=false;												
+						}
+						else if(aulas[i][j].contains(cadenaBuscar)) {							
+								System.out.print("el alumno de nombre: " + cadenaBuscar + " esta en el aula: " + (i + 1) + ", puesto " + (j + 1) + ": ");
+								encontrado=true;
 						}
 					}
 				}
@@ -62,9 +64,7 @@ public class BidimensionalesClase {
 					for (int j = 0; j < aulas[i].length; j++) {
 						if (aulas[i][j].contains(cadenaBuscarDos)) {
 							aulas[i][j]=null;
-							escierto=true;
-						
-							
+							escierto=true;							
 						}
 					}
 				}
