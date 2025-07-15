@@ -45,7 +45,7 @@ public class BidimensionalesClase {
 				for (int i = 0; i < aulas.length; i++) {
 					for (int j = 0; j < aulas[i].length; j++) {
 						if (aulas[i][j]==null) {
-							System.out.print("el alumno de nombre: " + cadenaBuscar + " no existe");
+							
 							encontrado=false;												
 						}
 						else if(aulas[i][j].contains(cadenaBuscar)) {							
@@ -53,7 +53,9 @@ public class BidimensionalesClase {
 								encontrado=true;
 						}
 					}
+					
 				}
+				System.out.print("el alumno de nombre: " + cadenaBuscar + " no existe");
 				break;
 			case 4:
 				System.out.print("Introduce nombre a borrar: ");
