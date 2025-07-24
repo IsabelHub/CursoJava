@@ -32,6 +32,6 @@ public class CuentaVocales {
 		else
 		{
 			System.out.print("las " +contador + " vocales encontradas son: " + soloVocales);
-		}			
+		}	
 	}
 }
