@@ -92,8 +92,6 @@ public class Ejercicio5Metodos {
 		System.out.println("");
 		}
 	}
-	
-	
 	public static void validarEmail(String[] args) {
 
 			Scanner sc = new Scanner(System.in);
@@ -118,7 +116,6 @@ public class Ejercicio5Metodos {
 	    } 
 	    
 	}
-
 	public static void tablas(int numero1, int numero2) {
 		
 		 for (int i=numero1 ; i<=numero2 ; i++ ) {
@@ -161,8 +158,7 @@ public class Ejercicio5Metodos {
 			System.out.println((i + 1) + ". " + opciones[i]);
 		}
 		System.out.println("Texto:" + texto);
-	}
-	
+	}	
 	public static int pideDatoNumerico (String texto) {
 		System.out.println("Texto:" + texto);
 		System.out.println("Introduce dato Numerico:  ");
