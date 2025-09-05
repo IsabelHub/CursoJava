@@ -1,4 +1,4 @@
-package es.cursojava.inicio.oo;
+package es.cursojava.inicio.Colegio;
 
 public class Colegio {
 

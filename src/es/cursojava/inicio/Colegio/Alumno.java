@@ -1,4 +1,4 @@
-package es.cursojava.inicio.oo;
+package es.cursojava.inicio.Colegio;
 /*
  * crear alumno con atributos:
  * nombre, dni, notaMedia,asignaturas
