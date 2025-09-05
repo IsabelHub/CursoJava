@@ -1,6 +1,6 @@
 package es.cursojava.tienda;
 
-import es.cursojava.inicio.oo.Alumno;
+import es.cursojava.inicio.Colegio.Alumno;
 
 /*
  * con un método estático:
