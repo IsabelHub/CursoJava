@@ -32,11 +32,9 @@ public class Main {
 		 * crear una segunda biblioteca donde nos creamos libros diferentes
 		 * y hacer un metodo y decidir donde hacerlo que nos indique que libros tienen en comun
 		 * 
-		 * 
 		 * */
 		
 		//Biblioteca 2
-		
 		Direccion direccion2 = new Direccion("Atocha", "Madrid", 45700);
 		Libro libro4= new Libro("Donde los escorpiones", "Ramoncin", 123456789);
 		Libro libro5= new Libro("Amores lunaticos", "Lorenzo Silva", 987654321);
@@ -59,8 +57,7 @@ public class Main {
 		for (int i = 0; i<libros2.length; i++) {
 			for (int j =0; j<libros1.length;j++)
 			{
-				if (libros2[i].getTitulo() == libros1[j].getTitulo()) {
-				       
+				if (libros2[i].getTitulo() == libros1[j].getTitulo()) {				       
 				      System.out.println("---En ambas biblotecas existe el mismo titulo. " + "Título en común: " + libros1[j].getTitulo() );
 				 }
 			}

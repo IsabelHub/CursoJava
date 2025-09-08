@@ -56,8 +56,12 @@ public class Biblioteca {
 
 		for (Libro libro : libros) {
 			System.out.println("---Libro: " + numLibro);
-			libro.mostrarInfo();
-			numLibro++;
+			if(libro !=null)
+			{
+				libro.mostrarInfo();
+				numLibro++;
+			}
+			
 		}
 	}
 	
