@@ -15,10 +15,12 @@ public class Main {
 		// TODO Auto-generated method stub
 
 	
-		Maniqui maniqui = new Maniqui();
 		TiendaManiqui tiendaManiqui = new TiendaManiqui("Fashion");
 		System.out.println("La tienda esta abierta? ");
-		tiendaManiqui.abrirTienda(maniqui);
+		tiendaManiqui.abrirTienda();
+		tiendaManiqui.vestirManiquies();
+		tiendaManiqui.mostrarEscaparate();
+		tiendaManiqui.cerrarTienda();
 	}
 
 }

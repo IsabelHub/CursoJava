@@ -29,7 +29,7 @@ public class Maniqui {
 
 		this.camisa = camisa;
 		this.pantalon = pantalon;
-		System.out.println("Maniquí " + id + " vestido con camisa y pantalón.");
+		//System.out.println("Maniquí vestido con camisa y pantalón.");
 
 	}
 
@@ -40,7 +40,7 @@ public class Maniqui {
 		}
 
 		this.vestido = vestido;
-		System.out.println("Maniquí " + id + " vestido con vestido.");
+		//System.out.println("Maniquí vestido con vestido.");
 
 	}
 
@@ -48,7 +48,7 @@ public class Maniqui {
 		this.camisa = null;
 		this.pantalon = null;
 		this.vestido = null;
-		System.out.println("Maniquí " + id + " ha sido desvestido.");
+		System.out.print(" ha sido desvestido.");
 	}
 	
 	public boolean estaDesvestido() {
@@ -56,9 +56,16 @@ public class Maniqui {
 	}
 	
 	public void mostrarInfoManiqui() {	
-		System.out.println("Color es: ");
-		System.out.println("Forma es: ");
-		System.out.println("Tamaño es: ");
+	    if (vestido != null) {
+	        System.out.println("Maniquí con vestido:");
+	        System.out.println(vestido.mostrarInfoVestido());
+	    } else if (camisa != null && pantalon != null) {
+	        System.out.println("Maniquí con camisa y pantalón:");
+	        System.out.print(camisa.mostrarInfoCamisa());
+	        System.out.println(pantalon.mostrarInfoPantalon());
+	    } else {
+	        System.out.println("Maniquí está desvestido.");
+	    }
 	}
 
 }

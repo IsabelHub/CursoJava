@@ -38,10 +38,8 @@ public class Vestido {
 		this.talla = talla;
 	}
 	
-	public void mostrarInfo() {	
-		System.out.println("Color es: "+ getColor());
-		System.out.println("Forma es: "+ getPrecio());
-		System.out.println("Tamaño es: "+ getTalla());
+	public String mostrarInfoVestido() {	
+		 return "Color: " + color + ", Talla: " + talla + ", Precio: " + precio;
 	}
 	
 }

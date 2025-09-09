@@ -38,10 +38,10 @@ public class Boton {
 		return forma;
 	}
 
-	public void mostrarInfo() {	
-		System.out.println("Color es: "+ getColor());
-		System.out.println("Forma es: "+ getForma());
-		System.out.println("Tamaño es: "+ getTamanio());
+	public String mostrarInfoBoton() {	
+		 return "Color: " + color + ", Forma: " + forma + ", Tamaño: " + tamanio ;
+
+	
 	}
 	
 

@@ -66,10 +66,7 @@ public class Pantalon {
 
 
 
-	public void mostrarInfoPantalon() {	
-		System.out.println("Color es: "+ getColor());
-		System.out.println("Precio es: "+ getPrecio());
-		System.out.println("Talla es: "+ getTalla());
-		System.out.println("Boton es: "+ getBoton());
+	public String mostrarInfoPantalon() {	
+		 return "\nPANTALON-Color: " + color + ", Talla: " + talla + ", Precio: " + precio + ", Boton: " + boton.mostrarInfoBoton();
 	}
 }

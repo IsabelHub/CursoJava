@@ -17,24 +17,12 @@ public class Camisa {
 				
 	}
  
-
 	public String getColor() {
 		return color;
 	}
 
-
-	public void setColor(String color) {
-		this.color = color;
-	}
-
-
 	public double getPrecio() {
 		return precio;
-	}
-
-
-	public void setPrecio(double precio) {
-		this.precio = precio;
 	}
 
 
@@ -42,22 +30,17 @@ public class Camisa {
 		return talla;
 	}
 
-
-	public void setTalla(String talla) {
-		this.talla = talla;
-	}
-
-
 	public Boton[] getBoton() {
 		return boton;
 	}
 
+	
+	public String mostrarInfoCamisa() {	
+		
+		 return "CAMISA-Color: " + color + ", precio: " + precio + ", talla: " + talla + ",botones: "+ getBoton();
+		
 
-	public void setBoton(Boton[] boton) {
-		this.boton = boton;
 	}
-	
-	
 	
 	
 }
