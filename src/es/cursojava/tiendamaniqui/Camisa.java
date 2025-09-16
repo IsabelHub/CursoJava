@@ -5,7 +5,7 @@ public class Camisa {
 	private String color;
 	private double precio;
 	private String talla;
-	private Boton[] boton;
+	private Boton[] botones;
 
 	
 	public Camisa( String color,double precio, String talla,int numBotones)
@@ -13,7 +13,7 @@ public class Camisa {
 		this.color=color;
 		this.precio=precio;
 		this.talla=talla;
-		this.boton = new Boton[numBotones];
+		this.botones = new Boton[numBotones];
 				
 	}
  
@@ -31,7 +31,7 @@ public class Camisa {
 	}
 
 	public Boton[] getBoton() {
-		return boton;
+		return botones;
 	}
 
 	

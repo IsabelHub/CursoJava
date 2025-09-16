@@ -1,6 +1,7 @@
 package es.cursojava.tiendamaniqui;
 
 
+
 /*
  * Llamo a 
 		1)abrirTienda()
@@ -21,6 +22,7 @@ public class Main {
 		tiendaManiqui.vestirManiquies();
 		tiendaManiqui.mostrarEscaparate();
 		tiendaManiqui.cerrarTienda();
+		
 	}
 
 }
