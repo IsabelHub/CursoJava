@@ -18,7 +18,8 @@ import org.slf4j.LoggerFactory;
 
 public class Instrumento {
 
-	private static final Logger logger = LoggerFactory.getLogger(Instrumento.class.getName());
+	
+	private static final Logger logger = LoggerFactory.getLogger(Instrumento.class);
 	
 	private String nombre;
 	private String tipo;
