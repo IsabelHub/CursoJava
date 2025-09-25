@@ -19,8 +19,9 @@ public class Persona {
 		return edad;
 	}
 	
-	public static void comer() {
+	public boolean comer() {
 		
+		return false;
 	}
 	
 	
