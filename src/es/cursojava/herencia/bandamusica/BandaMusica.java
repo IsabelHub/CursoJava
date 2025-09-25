@@ -1,4 +1,4 @@
-package es.cursojava.herencia;
+package es.cursojava.herencia.bandamusica;
 
 /*
  * BandaMusica

@@ -1,6 +1,6 @@
 package es.cursojava.tiendamaniqui;
 
-import es.cursojava.biblioteca.Libro;
+import es.cursojava.herencia.biblioteca.Libro;
 
 public class TiendaManiqui {
 

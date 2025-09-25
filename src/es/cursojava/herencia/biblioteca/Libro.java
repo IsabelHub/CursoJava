@@ -1,4 +1,4 @@
-package es.cursojava.biblioteca;
+package es.cursojava.herencia.biblioteca;
 
 /*
  * Clase Libro
