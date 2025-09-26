@@ -5,10 +5,11 @@ public class Habitacion {
 	int numPaciente;
 	Enfermo enfermo = new Enfermo("nombre", 100, "Lumbago");
 	
-	public Habitacion(int numPaciente, Enfermo enfermo) {
+	//cuando creas una habitacion no le puedes obligar a tener asignado enfermo
+	public Habitacion(int numPaciente) {
 		super();
 		this.numPaciente = numPaciente;
-		this.enfermo = enfermo;
+		
 	}
 	
 	

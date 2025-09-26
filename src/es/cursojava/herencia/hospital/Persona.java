@@ -1,6 +1,6 @@
 package es.cursojava.herencia.hospital;
 
-public class Persona {
+public abstract class Persona {
 
 	private String nombre;
 	private int edad;
@@ -19,10 +19,7 @@ public class Persona {
 		return edad;
 	}
 	
-	public boolean comer() {
-		
-		return false;
-	}
+	public abstract void comer();
 	
 	
 }

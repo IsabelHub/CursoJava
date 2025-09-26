@@ -3,12 +3,12 @@ package es.cursojava.herencia.hospital;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import es.cursojava.herencia.bandamusica.Instrumento;
+import es.cursojava.herencia.hospital.Enfermo;
 
 public class Enfermo extends Persona{
 	
 	
-	private static final Logger logger = LoggerFactory.getLogger(Instrumento.class);
+	private static final Logger logger = LoggerFactory.getLogger(Enfermo.class);
 
 	String enfermedad;
 
@@ -21,15 +21,14 @@ public class Enfermo extends Persona{
 		return enfermedad;
 	}
 
-	public boolean comer(){
+	@Override
+	public void comer() {
+		logger.info(getNombre() + "Enfermo ... comiendo en la habitación"  );
 
-		if (comer())
-		{
-			logger.info(getNombre() + "Enfermo ... comiendo en la habitación"  );
-		}
-		return false;
-		
 	}
+
+
+
 
 	
 	
