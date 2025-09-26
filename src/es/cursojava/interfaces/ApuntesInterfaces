@@ -1,0 +1,13 @@
+//otorgar funcionalidad a las clases
+//obligar a las clases  a tener una cierta funcionalidad 
+
+//variables son static y finales
+//los metodos son abstractos
+//aunque no son obligatorios usar la nomenclatura propia del abstract  y static
+
+
+
+//laa clase obnligada a implenatar una interfaz esta obligada a sobreescribir los meodos abtractos d ela interfaz
+
+//las interfaces tanmbien tienen herencia
+//pueden heredar de varias interfaces a la vez
