@@ -7,7 +7,9 @@
 
 
 
-//laa clase obnligada a implenatar una interfaz esta obligada a sobreescribir los meodos abtractos d ela interfaz
+//laa clase obligada a implementar una interfaz esta obligada a sobreescribir los metodos abtractos de la interfaz
 
-//las interfaces tanmbien tienen herencia
-//pueden heredar de varias interfaces a la vez
+//las interfaces tambien tienen herencia
+//pueden heredar de varias interfaces a la vez, es decir una interfaz puede heredar de varias interfaces
+//las interface stambien la podemos usar como tipo de clases;
+Interfaz2 i2 = new ClasePrueba(); 
