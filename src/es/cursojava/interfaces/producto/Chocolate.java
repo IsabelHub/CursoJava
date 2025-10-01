@@ -1,11 +1,6 @@
 package es.cursojava.interfaces.producto;
 
-public class Hummus extends Alimentos implements Consultable, Insertable, Updatable {
-
-	public Hummus(String nombre, double precio, int id) {
-		super(nombre, precio, id);
-		// TODO Auto-generated constructor stub
-	}
+public class Chocolate implements Consultable, Insertable, Updatable {
 
 	@Override
 	public void update() {
@@ -19,12 +14,12 @@ public class Hummus extends Alimentos implements Consultable, Insertable, Updata
 		
 	}
 
+	
+
 	@Override
 	public void select() {
 		// TODO Auto-generated method stub
 		
 	}
-
-	
 
 }
