@@ -1,12 +1,12 @@
 package es.cursojava.interfaces.producto;
 
-public class ProductoElectronico extends Producto implements Encendible, Apagable {
+public abstract class ProductoElectronico extends Producto implements Encendible, Apagable {
 	
-	private String fechaCaducidad;
+	private String fechaFabricacion;
 
-	public ProductoElectronico(String nombre, double precio, String fechaCaducidad) {
-		super(nombre, precio);
-		this.fechaCaducidad= fechaCaducidad;
+	public ProductoElectronico(String nombre, double precio, int id, String fechaFabricacion) {
+		super(nombre, precio,id);
+		this.fechaFabricacion= fechaFabricacion;
 	}
 	
 

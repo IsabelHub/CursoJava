@@ -1,12 +1,12 @@
 package es.cursojava.interfaces.producto;
 
 public abstract class Alimentos extends Producto {
-
+	
 	private String fechaCaducidad;
 
 	
-	public Alimentos(String nombre, double precio) {
-		super(nombre, precio);
+	public Alimentos(String nombre, double precio, int id) {
+		super(nombre, precio, id);
 		// TODO Auto-generated constructor stub
 	}
 
