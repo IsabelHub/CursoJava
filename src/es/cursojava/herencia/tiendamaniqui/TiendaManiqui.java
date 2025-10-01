@@ -1,4 +1,4 @@
-package es.cursojava.tiendamaniqui;
+package es.cursojava.herencia.tiendamaniqui;
 
 import es.cursojava.herencia.biblioteca.Libro;
 

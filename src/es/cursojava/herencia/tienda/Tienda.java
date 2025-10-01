@@ -1,4 +1,4 @@
-package es.cursojava.tienda;
+package es.cursojava.herencia.tienda;
 
 /*
  * En una clase llamada Tienda con main:

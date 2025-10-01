@@ -1,4 +1,4 @@
-package es.cursojava.tiendamaniqui;
+package es.cursojava.herencia.tiendamaniqui;
 
 public class Maniqui {
 	private int id;

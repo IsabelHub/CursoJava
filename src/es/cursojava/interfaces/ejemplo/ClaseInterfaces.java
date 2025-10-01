@@ -1,4 +1,4 @@
-package es.cursojava.interfaces;
+package es.cursojava.interfaces.ejemplo;
 
 public class ClaseInterfaces implements Interfaz1{
 

@@ -1,4 +1,4 @@
-package es.cursojava.tienda;
+package es.cursojava.herencia.tienda;
 
 import es.cursojava.inicio.Colegio.Alumno;
 

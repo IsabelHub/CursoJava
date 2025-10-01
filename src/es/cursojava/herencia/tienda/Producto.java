@@ -1,4 +1,4 @@
-package es.cursojava.tienda;
+package es.cursojava.herencia.tienda;
 /* Ejercicio 2
 =============================================
 Crea un paquete llamado tienda en ejercicios.
