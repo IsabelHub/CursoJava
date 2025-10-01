@@ -1,4 +1,4 @@
-package es.cursojava.interfaces.producto.interfaces;
+package es.cursojava.interfaces.productovehiculo.interfaces;
 
 public interface Insertable {
 

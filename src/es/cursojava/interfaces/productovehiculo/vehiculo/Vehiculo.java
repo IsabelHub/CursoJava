@@ -1,4 +1,4 @@
-package es.cursojava.interfaces.producto.pojos;
+package es.cursojava.interfaces.productovehiculo.vehiculo;
 
 public abstract class Vehiculo {
 	

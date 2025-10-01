@@ -1,8 +1,7 @@
-package es.cursojava.interfaces.producto.pojos;
+package es.cursojava.interfaces.productovehiculo.vehiculo.vehiculomonotorizado;
 
-import es.cursojava.interfaces.producto.VehiculosMotorizado;
-import es.cursojava.interfaces.producto.interfaces.Consultable;
-import es.cursojava.interfaces.producto.interfaces.Deletable;
+import es.cursojava.interfaces.productovehiculo.interfaces.Consultable;
+import es.cursojava.interfaces.productovehiculo.interfaces.Deletable;
 
 public class MonopatinElectrico extends VehiculosMotorizado implements Consultable, Deletable{
 

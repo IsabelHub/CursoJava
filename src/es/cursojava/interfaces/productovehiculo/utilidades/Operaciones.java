@@ -1,19 +1,19 @@
-package es.cursojava.interfaces.producto;
+package es.cursojava.interfaces.productovehiculo.utilidades;
 
-import es.cursojava.interfaces.producto.interfaces.Consultable;
-import es.cursojava.interfaces.producto.interfaces.Deletable;
-import es.cursojava.interfaces.producto.interfaces.Insertable;
-import es.cursojava.interfaces.producto.interfaces.Updatable;
+import es.cursojava.interfaces.productovehiculo.interfaces.Consultable;
+import es.cursojava.interfaces.productovehiculo.interfaces.Deletable;
+import es.cursojava.interfaces.productovehiculo.interfaces.Insertable;
+import es.cursojava.interfaces.productovehiculo.interfaces.Updatable;
 
 public class Operaciones {
-	static void selectObject(Object obj) {
+	public static void selectObject(Object obj) {
         if (obj instanceof Consultable) {
             ((Consultable) obj).select();
         } else {
             System.out.println("Este objeto no se puede consultar.");
         }
     }
-	static void insertObject(Object obj) {
+	public static void insertObject(Object obj) {
         if (obj instanceof Insertable) {
             ((Insertable) obj).insert();
         } else {
@@ -21,7 +21,7 @@ public class Operaciones {
         }
     }
 
-	static void updateObject(Object obj) {
+	public static void updateObject(Object obj) {
 		 if (obj instanceof Updatable) {
 	            ((Updatable) obj).update();
 	        } else {
@@ -29,7 +29,7 @@ public class Operaciones {
 	        }
 	}
 	
-	static void deleteObject(Object obj) {
+	public static void deleteObject(Object obj) {
 		 if (obj instanceof Deletable) {
 	            ((Deletable) obj).delete();
 	        } else {

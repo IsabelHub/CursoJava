@@ -1,8 +1,9 @@
-package es.cursojava.interfaces.producto;
+package es.cursojava.interfaces.productovehiculo;
 
-import es.cursojava.interfaces.producto.pojos.Chocolate;
-import es.cursojava.interfaces.producto.pojos.Hummus;
-import es.cursojava.interfaces.producto.pojos.Queso;
+import es.cursojava.interfaces.productovehiculo.pojos.producto.alimento.Chocolate;
+import es.cursojava.interfaces.productovehiculo.pojos.producto.alimento.Hummus;
+import es.cursojava.interfaces.productovehiculo.pojos.producto.alimento.Queso;
+import es.cursojava.interfaces.productovehiculo.utilidades.Operaciones;
 
 public class Main {
 

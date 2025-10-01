@@ -1,8 +1,8 @@
-package es.cursojava.interfaces.producto;
+package es.cursojava.interfaces.productovehiculo.vehiculo.vehiculomonotorizado;
 
-import es.cursojava.interfaces.producto.interfaces.Apagable;
-import es.cursojava.interfaces.producto.interfaces.Encendible;
-import es.cursojava.interfaces.producto.pojos.Vehiculo;
+import es.cursojava.interfaces.productovehiculo.interfaces.Apagable;
+import es.cursojava.interfaces.productovehiculo.interfaces.Encendible;
+import es.cursojava.interfaces.productovehiculo.vehiculo.Vehiculo;
 
 public class VehiculosMotorizado extends Vehiculo implements Encendible, Apagable {
 	

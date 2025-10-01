@@ -1,7 +1,8 @@
-package es.cursojava.interfaces.producto;
+package es.cursojava.interfaces.productovehiculo.pojos.producto.productoelectronico;
 
-import es.cursojava.interfaces.producto.interfaces.Apagable;
-import es.cursojava.interfaces.producto.interfaces.Encendible;
+import es.cursojava.herencia.tienda.Producto;
+import es.cursojava.interfaces.productovehiculo.interfaces.Apagable;
+import es.cursojava.interfaces.productovehiculo.interfaces.Encendible;
 
 public abstract class ProductoElectronico extends Producto implements Encendible, Apagable {
 	

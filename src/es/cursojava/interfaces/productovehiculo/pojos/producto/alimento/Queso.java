@@ -1,8 +1,6 @@
-package es.cursojava.interfaces.producto.pojos;
+package es.cursojava.interfaces.productovehiculo.pojos.producto.alimento;
 
-import es.cursojava.interfaces.producto.Alimentos;
-import es.cursojava.interfaces.producto.interfaces.Consultable;
-
+import es.cursojava.interfaces.productovehiculo.interfaces.Consultable;
 
 public class Queso extends Alimentos implements Consultable {
 

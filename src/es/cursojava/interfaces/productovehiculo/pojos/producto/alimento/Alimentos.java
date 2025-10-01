@@ -1,4 +1,6 @@
-package es.cursojava.interfaces.producto;
+package es.cursojava.interfaces.productovehiculo.pojos.producto.alimento;
+
+import es.cursojava.interfaces.productovehiculo.pojos.producto.Producto;
 
 public abstract class Alimentos extends Producto {
 	

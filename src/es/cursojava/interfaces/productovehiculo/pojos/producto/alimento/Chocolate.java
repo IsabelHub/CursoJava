@@ -1,9 +1,8 @@
-package es.cursojava.interfaces.producto.pojos;
+package es.cursojava.interfaces.productovehiculo.pojos.producto.alimento;
 
-import es.cursojava.interfaces.producto.Alimentos;
-import es.cursojava.interfaces.producto.interfaces.Consultable;
-import es.cursojava.interfaces.producto.interfaces.Insertable;
-import es.cursojava.interfaces.producto.interfaces.Updatable;
+import es.cursojava.interfaces.productovehiculo.interfaces.Consultable;
+import es.cursojava.interfaces.productovehiculo.interfaces.Insertable;
+import es.cursojava.interfaces.productovehiculo.interfaces.Updatable;
 
 public class Chocolate extends Alimentos implements Consultable, Insertable, Updatable {
 
