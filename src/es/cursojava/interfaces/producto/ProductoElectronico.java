@@ -1,5 +1,8 @@
 package es.cursojava.interfaces.producto;
 
+import es.cursojava.interfaces.producto.interfaces.Apagable;
+import es.cursojava.interfaces.producto.interfaces.Encendible;
+
 public abstract class ProductoElectronico extends Producto implements Encendible, Apagable {
 	
 	private String fechaFabricacion;

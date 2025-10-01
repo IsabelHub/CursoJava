@@ -1,5 +1,9 @@
 package es.cursojava.interfaces.producto;
 
+import es.cursojava.interfaces.producto.pojos.Chocolate;
+import es.cursojava.interfaces.producto.pojos.Hummus;
+import es.cursojava.interfaces.producto.pojos.Queso;
+
 public class Main {
 
 	public static void main(String[] args) {

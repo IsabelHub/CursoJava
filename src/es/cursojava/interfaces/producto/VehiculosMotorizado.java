@@ -1,5 +1,9 @@
 package es.cursojava.interfaces.producto;
 
+import es.cursojava.interfaces.producto.interfaces.Apagable;
+import es.cursojava.interfaces.producto.interfaces.Encendible;
+import es.cursojava.interfaces.producto.pojos.Vehiculo;
+
 public class VehiculosMotorizado extends Vehiculo implements Encendible, Apagable {
 	
 
@@ -15,13 +19,21 @@ public class VehiculosMotorizado extends Vehiculo implements Encendible, Apagabl
 		return motor;
 	}
 
-	@Override
-	public void encender() {
-		System.out.println("Vehículo motorizado con motor " + motor + " encendido.");
-	}
+
 
 	@Override
 	public void apagar() {
-		System.out.println("Vehículo motorizado con motor " + motor + " apagado.");
+		// TODO Auto-generated method stub
+		
 	}
+
+
+
+	@Override
+	public void encender() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 }

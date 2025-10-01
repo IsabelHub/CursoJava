@@ -1,4 +1,8 @@
-package es.cursojava.interfaces.producto;
+package es.cursojava.interfaces.producto.pojos;
+
+import es.cursojava.interfaces.producto.ProductoElectronico;
+import es.cursojava.interfaces.producto.interfaces.Consultable;
+import es.cursojava.interfaces.producto.interfaces.Deletable;
 
 public class Radio extends ProductoElectronico implements Consultable, Deletable {
 

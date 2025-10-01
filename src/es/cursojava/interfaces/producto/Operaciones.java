@@ -1,5 +1,10 @@
 package es.cursojava.interfaces.producto;
 
+import es.cursojava.interfaces.producto.interfaces.Consultable;
+import es.cursojava.interfaces.producto.interfaces.Deletable;
+import es.cursojava.interfaces.producto.interfaces.Insertable;
+import es.cursojava.interfaces.producto.interfaces.Updatable;
+
 public class Operaciones {
 	static void selectObject(Object obj) {
         if (obj instanceof Consultable) {
