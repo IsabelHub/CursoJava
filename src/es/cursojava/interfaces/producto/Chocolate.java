@@ -1,6 +1,11 @@
 package es.cursojava.interfaces.producto;
 
-public class Chocolate implements Consultable, Insertable, Updatable {
+public class Chocolate extends Alimentos implements Consultable, Insertable, Updatable {
+
+	public Chocolate(String nombre, double precio, int id) {
+		super(nombre, precio, id);
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public void update() {
@@ -13,8 +18,6 @@ public class Chocolate implements Consultable, Insertable, Updatable {
 		// TODO Auto-generated method stub
 		
 	}
-
-	
 
 	@Override
 	public void select() {
