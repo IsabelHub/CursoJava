@@ -38,5 +38,39 @@ SET estado_publicacion = 'INACTIVO'
 WHERE stock_disponible = 0;
 
 
+DELETE FROM productos
+WHERE estado_publicacion = 'INACTIVO'
+  AND stock_disponible = 0;
 
 
+SELECT *
+FROM productos
+WHERE estado_publicacion = 'INACTIVO'
+  AND stock_disponible = 0;
+  
+  SELECT *
+FROM productos
+ORDER BY precio_venta DESC
+FETCH FIRST 3 ROWS ONLY;
+
+DECLARE
+  v_count NUMBER;
+BEGIN
+  -- Verifica si existe la tabla 'PRODUCTOS' en el esquema actual
+  SELECT COUNT(*)
+  INTO v_count
+  FROM user_tables
+  WHERE table_name = 'PRODUCTOS';  -- Importante: nombre en MAYÚSCULAS
+
+  -- Si existe, renombrar la tabla
+  IF v_count = 1 THEN
+    EXECUTE IMMEDIATE 'RENAME productos TO productos_isabel';
+    DBMS_OUTPUT.PUT_LINE('Tabla renombrada correctamente.');
+  ELSE
+    DBMS_OUTPUT.PUT_LINE('La tabla "PRODUCTOS" no existe en el esquema actual.');
+  END IF;
+END;
+/
+
+select *
+from productos_isabel;
