@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import es.cursojava.interfaces.sistemadepago.interfaces.Pago;
 
 
-public class ProcesadorPagos implements Pago {
+public class ProcesadorPagos {
 	private static final Logger logger = LoggerFactory.getLogger(ProcesadorPagos.class.getName());
 
 	
@@ -25,9 +25,5 @@ public class ProcesadorPagos implements Pago {
     }
 
 
-	@Override
-	public void procesarPago(double monto) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }
