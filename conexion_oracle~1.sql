@@ -38,5 +38,27 @@ SET estado_publicacion = 'INACTIVO'
 WHERE stock_disponible = 0;
 
 
+UPDATE productos
+SET fecha_alta = TRUNC(fecha_alta, 'MM');
 
+
+SELECT *
+FROM productos;
+
+
+DELETE FROM productos
+WHERE estado_publicacion = 'INACTIVO'
+  AND stock_disponible = 0;
+
+
+SELECT *
+FROM productos
+WHERE estado_publicacion = 'INACTIVO'
+  AND stock_disponible = 0;
+
+
+SELECT *
+FROM productos
+ORDER BY precio_venta DESC
+FETCH FIRST 3 ROWS ONLY;
 
