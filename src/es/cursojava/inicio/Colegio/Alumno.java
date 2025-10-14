@@ -51,6 +51,10 @@ public class Alumno {
 		this.asignaturas = asignaturas;
 	}
 	
+	@Override
+	public String toString() {
+	    return "Nombre: " + nombre + ", Nota media: " + notaMedia;
+	}
     
     public double estudiar(){
     	 System.out.print("El estudiante " + nombre + " tiene las asignaturas: ");
