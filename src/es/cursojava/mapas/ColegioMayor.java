@@ -79,7 +79,8 @@ public class ColegioMayor {
 	 */
 
 	public void contarAulas() {
-
+		int totalAulas = aulas.size();
+        System.out.println("Número total de aulas: " + totalAulas);
 	}
 
 	/**
@@ -127,3 +128,4 @@ public class ColegioMayor {
 	}
 
 }
+
