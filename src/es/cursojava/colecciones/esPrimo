@@ -1,0 +1,18 @@
+package ejercicios_examen_2evaluacion;
+
+public class Utilidades 
+{
+	public static boolean esPrimo(int numero)
+	{
+		boolean primo=false;
+		for (int i = 2; i < numero/2; i++) 
+		{
+			if(numero%1!=0)
+			{
+				primo=true;
+			}
+		}
+		return primo;
+	}
+
+}
