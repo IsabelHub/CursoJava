@@ -1,0 +1,63 @@
+package repetidos;
+
+import java.util.Scanner;
+
+public class Main
+{
+
+	public static void main(String[] args)
+	{
+
+		int[][] numeros = new int[4][4];
+		Scanner sc = new Scanner(System.in);
+		// Leer el array desde consola
+		for (int i = 0; i < numeros.length; i++)
+		{
+
+			for (int j = 0; j < numeros[0].length; j++)
+			{
+				System.out.print("Número: ");
+				numeros[i][j] = sc.nextInt();
+			}
+		}
+		sc.close();
+		// Mostrarlo
+		for (int i = 0; i < numeros.length; i++)
+		{
+
+			for (int j = 0; j < numeros[0].length; j++)
+			{
+				System.out.print(numeros[i][j] + "\t");
+			}
+			System.out.print("\n\n");
+		}
+
+		// Buscar repetido
+		boolean repetido = false;
+		for (int i = 0; i < numeros.length && !repetido; i++)
+		{
+			for (int j = 0; j < numeros[0].length && !repetido; j++)
+			{
+				for (int i2 = i; i2 < numeros.length && !repetido; i2++)
+				{
+					for (int j2 = 0; j2 < numeros[0].length && !repetido; j2++)
+					{
+						if(numeros[i][j] == numeros[i2][j2] && (i != i2 || j != j2))
+						{
+							repetido = true;
+						}
+					}
+				}
+			}
+		}
+		if(repetido)
+		{
+			System.out.println("Hay algún repetido.");
+		}
+		else
+		{
+			System.out.println("No hay repetidos.");
+		}
+	}
+
+}
