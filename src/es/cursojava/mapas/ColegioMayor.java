@@ -38,7 +38,7 @@ public class ColegioMayor {
 	 *
 	 * @param aula→Nombre del aula
 	 * @param alumno→Alumno que se desea agregar
-	 * @throws  (si aplica)
+	 * @throws (si aplica)
 	 */
 	public void agregarAlumnoAula(String aula, Alumno alumno) {
 		
