@@ -1,0 +1,296 @@
+package naipes;
+
+public interface INaipes
+{
+	/**
+	* Traduce el número de la carta por su nombre:
+	* Ej.:
+	* 1 = As de oros
+	* 2 = Dos de oros
+	* ...
+	* 20 = Rey de copas
+	* ...
+	* @param numCarta (del 1 al 40)
+	* @return El nombre de la carta, o "" si numCarta no es válido. */
+	public String traducir(int numCarta);
+	/**
+	* Baraja las cartas que haya mazo de manera aleatoria
+	*/
+	public void barajar();
+	/**
+	* Extrae una carta al azar de las que haya en el mazo
+	* y disminuye el número de cartas
+	* @return devuelve el valor de la carta (del 1 al 40)
+	*/
+	public int extraerCartaAlAzar();
+	/**
+	* Extrae la carta superior del mazo y disminuye el número de cartas
+	* @return devuelve el valor de la carta (del 1 al 40)
+	*/
+	public int extraerCartaArriba();
+	/**
+	* @param posicion (las posiciones comienzan desde la 1, hasta el número
+	* de cartas que tenga el mazo en cada momento)
+	* @return -1 si no encuentra la posicion
+	*/
+	public int extraerCarta(int posicion);
+	/**
+	* Añade la carta indicada por parámetro sobre el mazo
+	* @param numCarta (las cartas válidas van del 1 al 40)
+	* @return false si la carta ya existe, true si se añade correctamente
+	*/
+	public boolean ponerCarta(int numCarta);
+	/**
+	* Devuelve el número de cartas existentes.
+	* @return Número de cartas actuales en el mazo.
+	*/
+	public int getNumCartas();
+	/**
+	* Ordena las cartas existentes en el mazo por palo (oros, copas, espadas y
+	* bastos) y dentro de cada palo por puntos.
+	*/
+	public void ordenar();
+}
+-----------------------------------------------------
+----------------------Naipes-------------------------------
+
+package naipes;
+
+import java.util.Random;
+
+public class Naipes implements INaipes
+{
+
+	private int[] cartas;
+	private int cont;
+
+	private static final String[] PALOS = {"oros", "copas", "espadas", "bastos"};
+
+	private static final String[] FIGURAS = {"As",
+											"Dos",
+											"Tres",
+											"Cuatro",
+											"Cinco",
+											"Seis",
+											"Siete",
+											"Sota",
+											"Caballo",
+											"Rey"};
+
+	public Naipes()
+	{
+		cartas = new int[40];
+		for (int i = 0; i < cartas.length; i++)
+		{
+			cartas[i] = i + 1;
+		}
+		cont = cartas.length;
+	}
+
+
+
+	public String traducir(int numCarta)
+	{
+		if(numCarta < 1 || numCarta > 40)
+		{
+			return "Carta no válida.";
+		}
+
+
+
+		numCarta--;
+		return FIGURAS[numCarta % 10] + " de " + PALOS[numCarta / 10];
+	}
+
+	@Override
+	public void barajar()
+	{
+		if(cont == 0)
+		{
+			return;
+		}
+
+		Random posicionRandom = new Random();
+		int aux;
+		int pos;
+		for (int i = 0; i < cont; i++)
+		{
+			pos = posicionRandom.nextInt(cont);
+
+			aux = cartas[i];
+			cartas[i] = cartas[pos];
+			cartas[pos] = aux;
+		}
+	}
+
+	@Override
+	public int extraerCartaAlAzar()
+	{
+		if(cont == 0)
+		{
+			return -1;
+		}
+
+		Random posicionRandom = new Random();
+		int pos = posicionRandom.nextInt(cont);
+		int numCarta = cartas[pos];
+		for (int i = pos; i < cont - 1; i++)
+		{
+			cartas[i] = cartas[i + 1];
+		}
+		cont--;
+		return numCarta;
+	}
+
+	@Override
+	public int extraerCartaArriba()
+	{
+		if(cont == 0)
+		{
+			return -1;
+		}
+		cont--;
+		return cartas[cont];
+
+	}
+
+	@Override
+	public int extraerCarta(int posicion)
+	{
+		if(cont == 0)
+		{
+			return -1;
+		}
+
+		posicion--;
+		if(posicion < 0 || posicion >= cont)
+		{
+			return -1;
+		}
+
+		int numCarta = cartas[posicion];
+		for (int i = posicion; i < cont - 1; i++)
+		{
+			cartas[i] = cartas[i + 1];
+		}
+		cont--;
+		return numCarta;
+	}
+
+	@Override
+	public boolean ponerCarta(int numCarta)
+	{
+		if(numCarta < 1 || numCarta > 40 || cont == 40)
+		{
+			return false;
+		}
+
+		for (int i = 0; i < cont; i++)
+		{
+			if(numCarta == cartas[i])
+			{
+				return false;
+			}
+		}
+		cartas[cont] = numCarta;
+		cont++;
+		return true;
+	}
+
+	@Override
+	public int getNumCartas()
+	{
+		return cont;
+	}
+
+	@Override
+	public void ordenar()
+	{
+		boolean ordenado = false;
+		int aux;
+		for (int i = 0; i < cont - 1 && !ordenado; i++)
+		{
+			ordenado = true;
+			for (int j = 0; j < cont - 1 - i; j++)
+			{
+				if(cartas[j] > cartas[j + 1])
+				{
+					ordenado = false;
+					aux = cartas[j];
+					cartas[j] = cartas[j + 1];
+					cartas[j + 1] = aux;
+				}
+			}
+		}
+	}
+
+}
+-----------------------------------------------------
+----------------------Main-------------------------------
+
+package naipes;
+
+public class Main
+{
+
+	public static void main(String[] args)
+	{
+
+		Naipes naipes = new Naipes();
+		for(int numCarta = 1; numCarta <= 40; numCarta++)
+		{
+			System.out.println(naipes.traducir(numCarta));
+		}
+
+		naipes.barajar();
+
+		System.out.println("Después de barajar:\n-------------------------");
+
+		for (int i = 0; i < 40; i++)
+		{
+			System.out.println(naipes.traducir(naipes.extraerCartaArriba()));
+		}
+
+		// Rellenar la baraja
+		for (int numCarta = 1; numCarta <= 40; numCarta++)
+		{
+			naipes.ponerCarta(numCarta);
+		}
+
+		System.out.println("Sacando cartas al azar:\n---------------------");
+
+		for (int i = 0; i < 40; i++)
+		{
+			System.out.println(naipes.traducir(naipes.extraerCartaAlAzar()));
+		}
+
+		System.out.println("Número de cartas de la baraja: " + naipes.getNumCartas());
+
+		System.out.println("Creando baraja nueva.\n----------------");
+
+		naipes = new Naipes();
+
+		naipes.barajar();
+
+		for (int i = 0; i < 10; i++)
+		{
+			naipes.extraerCartaArriba();
+		}
+
+		naipes.ordenar();
+
+		System.out.println("Mostrar 30 cartas ordenadas.");
+		while(naipes.getNumCartas() > 0)
+		{
+			System.out.println(naipes.traducir(naipes.extraerCartaArriba()));
+		}
+
+		System.out.println("Creando otra baraja:\n---------------------");
+		naipes = new Naipes();
+		while(naipes.getNumCartas() > 0)
+		{
+			System.out.println(naipes.traducir(naipes.extraerCarta(1)));
+		}
+	}
+
+}
