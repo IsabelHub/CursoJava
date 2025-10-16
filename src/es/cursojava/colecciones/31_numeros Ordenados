@@ -1,0 +1,130 @@
+package menu.numeros;
+
+import java.util.Scanner;
+
+public class Main
+{
+
+	public static void main(String[] args)
+	{
+		int[] numeros = new int[10];
+		Scanner sc = new Scanner(System.in);
+
+		int opcion = 0;
+		int cont = 0;
+		int aux;
+
+		while(opcion != 5)
+		{
+			// Mostrar menú
+			System.out.println("Menú: \n" +
+					"1.­ Introducir número entero.\n" +
+					"2.­ Listar números.\n" +
+					"3.­ Eliminar número.\n" +
+					"4.­ Eliminar todos los números.\n" +
+					"5.­ Salir.");
+			// Leer opción
+			opcion = sc.nextInt();
+			// Preguntar por la opción y ejecutarla
+			if(opcion == 1)
+			{
+				// Si el array está lleno, mostramos mensaje
+				if(cont == numeros.length)
+				{
+					System.out.println("Capacidad llena.");
+				}
+				else // Hay sitio, pero hay que mirar por si está repetido
+				{
+					System.out.print("Número: ");
+					aux = sc.nextInt();
+					// Insertar de manera ordenada
+					int i = 0;
+					while(aux > numeros[i] && i < cont)
+					{
+						i++;
+					}
+					if(aux == numeros[i] && i < cont)
+					{
+						System.out.println("Ya existe.");
+					}
+					else // Insertar en i
+					{
+						// Desplazamos elementos por la derecha
+						// para abrir hueco en la posición i
+						for(int j = cont - 1; j >= i; j--)
+						{
+							numeros[j + 1] = numeros[j];
+						}
+						numeros[i] = aux;
+						cont++;
+						System.out.println("Introducido el " + aux + ".");
+					}
+
+				}
+			}
+			else if(opcion == 2)
+			{
+				if(cont == 0)
+				{
+					System.out.println("Lista vacía.");
+				}
+				else
+				{
+					System.out.println("Números introducidos:");
+					for (int i = 0; i < cont; i++)
+					{
+						System.out.println(numeros[i]);
+					}
+				}
+			}
+			else if(opcion == 3) // Eliminar número
+			{
+				if(cont == 0) // Si no hay números
+				{
+					System.out.println("No hay números.");
+				}
+				else // Al menos hay un número
+				{
+					System.out.print("Número a borrar: ");
+					aux = sc.nextInt();
+					// borrar
+					int i = 0;
+					while(aux > numeros[i] && i < cont)
+					{
+						i++;
+					}
+					// Si se encuentra
+					if(aux == numeros[i] && i < cont)
+					{
+						// Borrar el elemento de la posición i
+						for (int j = i; j < cont - 1 ; j++)
+						{
+							numeros[j] = numeros[j + 1];
+						}
+						cont--;
+						System.out.println("Número borrado.");
+					}
+					else // No encontrado
+					{
+						System.out.println("No encontrado.");
+					}
+
+				}
+			}
+			else if(opcion == 4) // Eliminar todos
+			{
+				cont = 0;
+			}
+			else if(opcion == 5) // Opción salir
+			{
+
+			}
+			else
+			{
+				System.out.println("Opción no válida.");
+			}
+		}
+		sc.close();
+	}
+
+}
