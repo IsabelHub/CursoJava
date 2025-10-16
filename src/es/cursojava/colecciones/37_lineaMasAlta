@@ -1,0 +1,63 @@
+/**
+ * Paquete que contiene clases relacionadas con el análisis de matrices numéricas.
+ */
+package maximafila;
+
+import java.util.Random;
+
+/**
+ * Clase principal que genera una matriz de números aleatorios y determina
+ * cuál de sus filas tiene la suma más alta.
+ * 
+ * <p>El programa realiza las siguientes acciones:</p>
+ * <ul>
+ *   <li>Genera una matriz de 6 filas y 4 columnas con números aleatorios entre 1 y 10.</li>
+ *   <li>Calcula la suma de cada fila mientras se imprime la matriz por consola.</li>
+ *   <li>Identifica la fila cuya suma total es la mayor.</li>
+ *   <li>Imprime el índice de esa fila junto con el valor de la suma máxima.</li>
+ * </ul>
+ * 
+ * <p>Este programa es útil para practicar el manejo de matrices, generación de números aleatorios
+ * y lógica de comparación entre elementos.</p>
+ * 
+ * @author TuNombre
+ * @version 1.0
+ */
+public class Main {
+
+    /**
+     * Método principal que inicia la ejecución del programa.
+     * 
+     * <p>Genera una matriz de enteros de 6x4 con valores aleatorios entre 1 y 10 usando {@link java.util.Random}.
+     * Recorre cada fila para calcular su suma y determina cuál tiene el valor más alto.
+     * Finalmente, muestra por consola la matriz y la fila con la suma máxima.</p>
+     * 
+     * @param args Argumentos de línea de comandos (no utilizados en este programa).
+     */
+    public static void main(String[] args) {
+      int maxSuma = -1;
+		int indiceMax = -1;
+		int sumaFila;
+		int[][] numeros = new int[6][4];
+		Random random = new Random();
+		for (int i = 0; i < numeros.length; i++)
+		{
+			sumaFila = 0;
+			for (int j = 0; j < numeros[0].length; j++)
+			{
+				numeros[i][j] = random.nextInt(10) + 1;
+				System.out.print(numeros[i][j] + "\t");
+				sumaFila += numeros[i][j];
+			}
+			System.out.print("\n\n");
+			if(sumaFila > maxSuma)
+			{
+				maxSuma = sumaFila;
+				indiceMax = i;
+			}
+		}
+		System.out.println("La fila que más suma es la " +
+				indiceMax + " con " + maxSuma + ".");
+	}
+
+}
