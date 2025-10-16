@@ -128,9 +128,33 @@ public class ColegioMayor {
 	 * @throws
 	 */
 	public void aulaConNotaMasAlta() {
+		String aulaTop = null;
+        Alumno mejorAlumno = null;
+        double mejorNota = Double.MIN_VALUE;
 
+        for (Map.Entry<String, List<Alumno>> entrada : aulas.entrySet()) {
+            String nombreAula = entrada.getKey();
+            List<Alumno> alumnos = entrada.getValue();
+
+            for (Alumno alumno : alumnos) {
+                if (alumno.getNota() > mejorNota) {
+                    mejorNota = alumno.getNota();
+                    mejorAlumno = alumno;
+                    aulaTop = nombreAula;
+                }
+            }
+        }
+
+        if (mejorAlumno != null) {
+            System.out.println("El alumno con la mejor nota es " + mejorAlumno.getNombre() +
+                " con nota " + mejorNota + " en el aula '" + aulaTop + "'.");
+        } else {
+            System.out.println("No hay alumnos registrados.");
+        }
+    }
 	}
 
 }
+
 
 
