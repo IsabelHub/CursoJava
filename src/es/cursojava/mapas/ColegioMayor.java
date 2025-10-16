@@ -90,7 +90,11 @@ public class ColegioMayor {
 	 */
 
 	public void contarAlumnosPorAula() {
-
+		 for (Map.Entry<String, List<Alumno>> entrada : aulas.entrySet()) {
+            String nombreAula = entrada.getKey();
+            int cantidadAlumnos = entrada.getValue().size();
+            System.out.println("Aula '" + nombreAula + "' tiene " + cantidadAlumnos + " alumno(s).");
+        }
 	}
 
 	/**
@@ -128,4 +132,5 @@ public class ColegioMayor {
 	}
 
 }
+
 
