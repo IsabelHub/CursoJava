@@ -1,0 +1,131 @@
+package treeset.jugadores;
+
+public class Jugador implements Comparable<Jugador>
+{
+	private String nombre;
+	private int estatura;
+	public Jugador(String nombre, int estatura)
+	{
+		super();
+		this.nombre = nombre;
+		this.estatura = estatura;
+	}
+	public String getNombre()
+	{
+		return nombre;
+	}
+	public int getEstatura()
+	{
+		return estatura;
+	}
+
+	@Override
+	public int compareTo(Jugador jugador)
+	{
+		return nombre.compareToIgnoreCase(jugador.getNombre());
+	}
+
+}
+
+-----------------------------------------------------------------
+-------------------------------------------------------------------
+-----------------------------------------------------------------
+package treeset.jugadores;
+
+import java.util.Scanner;
+import java.util.TreeSet;
+
+public class Main
+{
+
+	private static Scanner sc;
+	private static TreeSet<Jugador> tsJugadores;
+
+	public static void main(String[] args)
+	{
+		sc = new Scanner(System.in);
+		tsJugadores = new TreeSet<Jugador>();
+
+		String opcion = "0";
+		while(!opcion.equals("5"))
+		{
+			mostrarMenu();
+			opcion = sc.nextLine();
+			switch (opcion)
+			{
+				case "1" :
+					introducirJugador();
+					break;
+				case "2":
+					listarJugadores();
+					break;
+				case "3":
+					eliminarJugador();
+					break;
+				case "4":
+					borrarTodos();
+					break;
+				case "5":
+					break;
+				default :
+					System.out.println("Opción no válida.");
+					break;
+			}
+
+		}
+	}
+
+
+	public static void borrarTodos()
+	{
+		tsJugadores.clear();
+	}
+
+	public static void eliminarJugador()
+	{
+		System.out.print("Nombre: ");
+		String nombre = sc.nextLine();
+		if(!tsJugadores.remove(new Jugador(nombre, -1)))
+		{
+			System.out.println("No encontrado.");
+		}
+	}
+
+	public static void introducirJugador()
+	{
+		System.out.print("Nombre: ");
+		String nombre = sc.nextLine();
+		if(tsJugadores.contains(new Jugador(nombre,-1)))
+		{
+			System.out.println("Ya existe.");
+		}
+		else
+		{
+			System.out.print("Estatura: ");
+			int estatura = Integer.parseInt(sc.nextLine());
+			tsJugadores.add(new Jugador(nombre, estatura));
+		}
+	}
+
+
+	private static void listarJugadores()
+	{
+		for (Jugador jugador: tsJugadores)
+		{
+			System.out.println(jugador.getNombre() +
+					" " + jugador.getEstatura());
+		}
+	}
+
+	private  static void mostrarMenu()
+	{
+		System.out.println("1.-Introducir jugador\n" +
+				"2.-Listar jugadores\n" +
+				"3.-Eliminar jugador\n" +
+				"4.-Borrar todos\n" +
+				"5.-Salir");
+	}
+
+}
+
+
