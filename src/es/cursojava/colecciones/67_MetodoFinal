@@ -1,0 +1,34 @@
+package demo;
+
+public class Demo
+{
+	public final void metodoFinal()
+	{
+		System.out.println("Este es un método final");
+	}
+
+	public void metodoNoFinal()
+	{
+		System.out.println("Este método no es final");
+	}
+}
+---------------------------------------
+-----------------------------------------
+
+package demo;
+
+public class SubDemo extends Demo
+{
+
+	@Override
+	public void metodoNoFinal()
+	{
+		System.out.println("Método sobreescrito");
+	}
+
+//	public void metodoFinal()
+//	{
+//		System.out.println("Sobreescrito final");
+//	}
+
+}
