@@ -1,0 +1,44 @@
+package ordenar;
+
+import java.util.Scanner;
+
+public class Main
+{
+	public static void main(String[] args)
+	{
+
+		Scanner sc = new Scanner(System.in);
+		String[] cadenas = new String[10];
+		for (int i = 0; i < cadenas.length; i++)
+		{
+			System.out.print("Cadena " + (i + 1) + ":");
+			cadenas[i] = sc.nextLine();
+		}
+		sc.close();
+		boolean ordenado = false;
+		String aux;
+		int i = 0;
+		while(!ordenado)
+		{
+			ordenado = true;
+			for (int j = 0; j < cadenas.length - 1 - i; j++)
+			{
+				if(cadenas[j].compareToIgnoreCase(cadenas[j + 1]) > 0)
+				{
+					aux = cadenas[j];
+					cadenas[j] = cadenas[j + 1];
+					cadenas[j + 1] = aux;
+					ordenado = false;
+				}
+			}
+			i++;
+		}
+		System.out.println("Cadenas ordenadas:");
+		for (int i2 = 0; i2 < cadenas.length; i2++)
+		{
+			System.out.println(cadenas[i2]);
+		}
+
+
+	}
+}
