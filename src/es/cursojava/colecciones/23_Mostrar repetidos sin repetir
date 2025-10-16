@@ -1,0 +1,89 @@
+/**
+ * Clase principal que permite al usuario introducir una serie de números enteros
+ * y muestra por pantalla aquellos que están repetidos, sin mostrar duplicados.
+ * 
+ * <p>El programa realiza las siguientes acciones:</p>
+ * <ul>
+ *   <li>Solicita al usuario que introduzca 6 números enteros.</li>
+ *   <li>Almacena los números en un arreglo de tamaño fijo.</li>
+ *   <li>Analiza el arreglo para detectar qué números aparecen más de una vez.</li>
+ *   <li>Imprime cada número repetido solo una vez, evitando mostrar duplicados.</li>
+ * </ul>
+ * 
+ * <p>Ejemplo de entrada:</p>
+ * <pre>
+ * Número: 5
+ * Número: 3
+ * Número: 5
+ * Número: 2
+ * Número: 3
+ * Número: 1
+ * </pre>
+ * 
+ * <p>Salida esperada:</p>
+ * <pre>
+ * Números repetidos sin repetir:
+ * 5
+ * 3
+ * </pre>
+ * 
+ * @author TuNombre
+ * @version 1.0
+ */
+public class Main {
+
+    /**
+     * Método principal que inicia la ejecución del programa.
+     * 
+     * <p>Este método permite al usuario introducir 6 números enteros por teclado.
+     * Luego recorre el arreglo para identificar cuáles de esos números están repetidos.
+     * Para evitar mostrar duplicados, se verifica si el número ya ha sido impreso antes.
+     * Finalmente, se imprime cada número repetido una sola vez.</p>
+     * 
+     * @param args Argumentos de línea de comandos (no utilizados en este programa).
+     */
+    public static void main(String[] args) {
+    
+		Scanner sc = new Scanner(System.in);
+		// Declaración del array
+		int[] numeros = new int[6];
+		for(int i = 0; i < numeros.length; i++)
+		{
+			System.out.print("Número: ");
+			numeros[i] = sc.nextInt();
+		}
+		// Mostrar los repetidos sin repetir.
+		boolean repetido;
+		boolean esElPrimero;
+		System.out.println("Números repetidos sin repetir:");
+		for(int i = 0; i < numeros.length; i++)
+		{
+			repetido = false;
+			for(int j = 0; j < numeros.length && !repetido; j++)
+			{
+				if(numeros[i] == numeros[j] && i != j)
+				{
+					repetido = true;
+				}
+			}
+			if(repetido)
+			{
+				esElPrimero = true;
+				// Solo mostrar si es la primera aparición
+				for(int j = 0; j < i && esElPrimero; j++)
+				{
+					if(numeros[j] == numeros[i])
+					{
+						esElPrimero = false;
+					}
+				}
+				// Mostrar o no numeros[i]
+				if(esElPrimero)
+				{
+					System.out.println(numeros[i]);
+				}
+			}
+		}		
+
+	}
+}
