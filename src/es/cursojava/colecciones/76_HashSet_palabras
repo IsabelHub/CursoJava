@@ -1,0 +1,113 @@
+package hashset.palabras;
+
+import java.util.HashSet;
+import java.util.Scanner;
+
+public class Main
+{
+
+	private static HashSet<String> hsPalabras;
+	private static Scanner sc;
+
+	public static void main(String[] args)
+	{
+		hsPalabras = new HashSet<>();
+		sc = new Scanner(System.in);
+
+		char opcion = '0';
+
+		while(opcion != '7')
+		{
+			mostrarMenu();
+			opcion = sc.nextLine().charAt(0);
+			switch (opcion)
+			{
+				case '1' :
+					introducirPalabra();
+					break;
+				case '2':
+					listarPalabras();
+					break;
+				case '3':
+					eliminarPalabra();
+					break;
+				case '4':
+					hsPalabras.clear();
+					break;
+				case '5':
+					System.out.println(hsPalabras.size());
+					break;
+				case '6':
+					buscarPalabra();
+					break;
+				case '7':
+					break;
+				default :
+					System.out.println("Opción no válida.");
+					break;
+			}
+		}
+		sc.close();
+	}
+
+	private static void mostrarMenu()
+	{
+		System.out.println("Opciones\n" +
+		"1.-Introducir palabra\n" +
+		"2.-Listar palabras\n" +
+		"3.-Eliminar palabra\n" +
+		"4.-Borrar todas\n" +
+		"5.-Mostrar tamaño\n" +
+		"6.-Buscar\n" +
+		"7.-Salir");
+	}
+
+	private static void listarPalabras()
+	{
+		System.out.println("Palabras:\n---------");
+		for (String palabra: hsPalabras)
+		{
+			System.out.println(palabra);
+		}
+	}
+
+	private static void eliminarPalabra()
+	{
+		System.out.print("Eliminar: ");
+		String palabraElimiar = sc.nextLine();
+		if(!hsPalabras.remove(palabraElimiar))
+		{
+			System.out.println("No existe.");
+		}
+		else
+		{
+			System.out.println("Eliminada.");
+		}
+	}
+
+	private static void introducirPalabra()
+	{
+		System.out.print("Palabra: ");
+		String palabra = sc.nextLine();
+
+		if(!hsPalabras.add(palabra))
+		{
+			System.out.println("Ya existe.");
+		}
+	}
+
+	private static void buscarPalabra()
+	{
+		System.out.print("Buscar: ");
+		String palabraBuscar = sc.nextLine();
+		if(hsPalabras.contains(palabraBuscar))
+		{
+			System.out.println("Existe.");
+		}
+		else
+		{
+			System.out.println("No existe.");
+		}
+	}
+
+}
