@@ -1,0 +1,71 @@
+/**
+ * Paquete que contiene clases relacionadas con la generación de números aleatorios.
+ */
+package aleatorios;
+
+import java.util.Random;
+
+/**
+ * Clase principal que genera y muestra una lista de números aleatorios únicos.
+ * 
+ * <p>Este programa realiza las siguientes acciones:</p>
+ * <ul>
+ *   <li>Genera 10 números aleatorios entre 1 y 100 (inclusive).</li>
+ *   <li>Se asegura de que todos los números generados sean únicos (sin repeticiones).</li>
+ *   <li>Imprime los números generados por consola.</li>
+ * </ul>
+ * 
+ * <p>Para garantizar la unicidad, el programa utiliza un bucle que verifica si el número
+ * generado ya existe en el arreglo antes de agregarlo.</p>
+ * 
+ * @author TuNombre
+ * @version 1.0
+ */
+public class Main {
+
+    /**
+     * Método principal que inicia la ejecución del programa.
+     * 
+     * <p>Utiliza la clase {@link java.util.Random} para generar números aleatorios dentro de un rango
+     * definido. Los números se almacenan en un arreglo de tamaño fijo, y se evita la duplicación
+     * mediante una búsqueda secuencial antes de insertar cada número.</p>
+     * 
+     * <p>Una vez completado el arreglo, se imprime cada número en una línea separada.</p>
+     * 
+     * @param args Argumentos de línea de comandos (no utilizados en este programa).
+     */
+    public static void main(String[] args) {
+       final int NUM_ALEATORIOS = 10;
+		final int RANGO = 100;
+
+
+		Random random = new Random();
+		int cont = 0;
+		int[] numeros = new int[NUM_ALEATORIOS];
+		boolean encontrado;
+		int aux;
+		while(cont < NUM_ALEATORIOS)
+		{
+			aux = random.nextInt(RANGO) + 1;
+			encontrado = false;
+			for (int i= 0; i < cont && !encontrado; i++)
+			{
+				if(aux == numeros[i])
+				{
+					encontrado = true;
+				}
+			}
+			if(!encontrado)
+			{
+				numeros[cont] = aux;
+				cont++;
+			}
+		}
+		for (int i = 0; i < numeros.length; i++)
+		{
+			System.out.println(numeros[i]);
+		}
+
+	}
+
+}
