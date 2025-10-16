@@ -1,0 +1,43 @@
+import java.util.Scanner;
+public class Main
+{
+	public static void main (String[] args)
+	{
+		int max5 = Integer.MIN_VALUE;
+		int min3 = Integer.MAX_VALUE;
+		int num;
+		
+		Scanner sc = new Scanner(System.in);
+		for(int i = 0; i < 10; i++)
+		{
+			System.out.println("Número: ");
+			num = sc.nextInt();
+			if(num % 5 == 0 && num > max5 && num != 0)
+			{
+				max5 = num;
+			}
+
+			if(num % 3 == 0 && num < min3 && num != 0)
+			{
+				min3 = num;			
+			}
+		}
+		if(max5 == Integer.MIN_VALUE)
+		{
+			System.out.println("No hay múltiplos de 5.");
+		}
+		else
+		{
+			System.out.println("El máximo múltiplo de 5 es: " + max5 + ".");
+		}
+
+		if(min3 == Integer.MAX_VALUE)
+		{
+			System.out.println("No hay múltiplos de 3.");
+		}
+		else
+		{
+			System.out.println("El mínimo múltiplo de 3 es: " + min3 + ".");
+		}		
+	}
+}
