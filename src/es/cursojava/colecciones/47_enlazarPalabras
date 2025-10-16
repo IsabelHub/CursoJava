@@ -1,0 +1,37 @@
+package enlazar;
+
+import java.util.Scanner;
+
+public class Main
+{
+
+	public static void main(String[] args)
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Cadena 1:");
+		String cadena1 = sc.nextLine();
+		System.out.print("Cadena 2:");
+		String cadena2 = sc.nextLine();
+
+		int i = 0;
+		while(i < cadena1.length() && i < cadena2.length())
+		{
+			System.out.print(cadena1.charAt(i) + "" + cadena2.charAt(i));
+			i++;
+		}
+		// Si quedan elementos por concatenar de cadena1
+		while(i < cadena1.length())
+		{
+			System.out.print(cadena1.charAt(i));
+			i++;
+		}
+		// Si quedan elementos de cadena2
+		while(i < cadena2.length())
+		{
+			System.out.print(cadena2.charAt(i));
+			i++;
+		}
+		sc.close();
+	}
+
+}
