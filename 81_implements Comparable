@@ -1,0 +1,168 @@
+package ejericicio_81;
+
+public class Jugador implements Comparable<Jugador>
+{
+	private String nombre;
+	private int estatura;
+
+
+
+	//constructor:
+	public Jugador(String nombre, int estatura)
+	{
+		this.estatura=estatura;
+		this.nombre=nombre;
+
+	}
+
+	//metodos:
+	public String getNombre()
+	{
+		return nombre;
+	}
+
+	public int getEstatura()
+	{
+		return estatura;
+	}
+
+	@Override
+	public int compareTo(Jugador jugador) 
+	{
+		
+		return nombre.compareToIgnoreCase(jugador.getNombre());
+	}
+
+}
+------------------------------------------------------
+------------------------------------------------------
+
+/*
+ * preguntas:
+ * 1) porque me da un warning en el	Scanner sc = new Scanner(System.in); 
+ * diciendome que le haga una variable private en el Main??
+ * 2)case 3 porque me pide solo el nombre? como hago para que el constructor de la clase jugador no me
+ * pida un entero o que entero le puedo pasar si solo debo teclear un nombre para eliminar.
+ *  
+ */
+package ejericicio_81;
+
+import java.util.Scanner;
+import java.util.TreeSet;
+
+public class Main 
+{
+
+	private static Scanner sc;
+
+	public static void main(String[] args) 
+	{
+		sc = new Scanner(System.in);
+		String opcion = "";
+		String nombreJu = "";
+		int estaturaJu = 0;
+
+		System.out.println("Introduce opcion, xfi");
+
+		TreeSet<Jugador> tsjugadores = new TreeSet<>();
+
+		while (!opcion.equals("5")) 
+		{
+			System.out.println("1.-Introducir jugador\n" 
+					+ "2.-Listar jugadores\n" 
+					+ "3.-Eliminar jugador\n"
+					+ "4.-Borrar todos\n" 
+					+ "5.-Salir\n");
+
+			opcion = sc.nextLine();
+
+			switch (opcion) 
+			{
+			case "1":
+				System.out.println("Introduce jugador: ");
+				nombreJu = sc.nextLine();
+				System.out.println("Introduce estatura del jugador: ");
+				estaturaJu = sc.nextInt();
+
+				if (tsjugadores.add(new Jugador(nombreJu, estaturaJu)))
+				{
+					System.out.println("jugador a�adido con exito");
+				} else {
+					System.out.println("el jugador ya existe");
+				}
+
+				break;
+			case "2":
+				for (Jugador jugador : tsjugadores) 
+				{
+					System.out.println("Estan inscritos los jugadores con nombres y estatura: " + jugador.getNombre()
+										+ "\t" +jugador.getEstatura());
+
+				}
+
+				break;
+			case "3":
+				System.out.println("Introduzca el nombre del jugador a eliminar: ");
+				nombreJu = sc.nextLine();
+
+				if (tsjugadores.remove(new Jugador(nombreJu, -1))) 
+				{
+					System.out.println("Jugador eliminado");
+
+				} else {
+					System.out.println("Jugador no eliminado. Comprueba los datos");
+				}
+
+				break;
+			case "4":
+
+				tsjugadores.clear();
+				System.out.println("Todos los jugadores han sido borrados");
+				break;
+
+			case "5":
+
+				System.out.println("Fin");
+
+				break;
+
+			default:
+				System.out.println("Opcion no valida.");
+				break;
+			}// switch
+
+		} // while
+
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
