@@ -1,0 +1,52 @@
+/**
+ * Paquete que contiene clases relacionadas con el análisis de cadenas.
+ */
+package mayusculas;
+
+import java.util.Scanner;
+
+/**
+ * Clase principal que permite al usuario introducir una cadena por teclado
+ * y verifica si dicha cadena está completamente en mayúsculas.
+ * 
+ * <p>El programa realiza lo siguiente:</p>
+ * <ul>
+ *   <li>Solicita al usuario que introduzca una cadena de texto.</li>
+ *   <li>Convierte la cadena a mayúsculas usando {@code toUpperCase()}.</li>
+ *   <li>Compara la cadena original con su versión en mayúsculas.</li>
+ *   <li>Imprime un mensaje indicando si la cadena está completamente en mayúsculas o no.</li>
+ * </ul>
+ * 
+ * <p>Ejemplo de ejecución:</p>
+ * <pre>
+ * Cadena: HOLA
+ * Cadena en mayúsculas.
+ * 
+ * Cadena: Hola
+ * Toda la cadena no está en mayúsculas.
+ * </pre>
+ * 
+ * @author Isabel
+ * @version 1.0
+ */
+public class Main {
+
+    /**
+     * Método principal que inicia la ejecución del programa.
+     * 
+     * @param args Argumentos de línea de comandos (no se utilizan en este programa).
+     */
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Cadena: ");
+        String cadena = sc.nextLine();
+        sc.close();
+
+        if (cadena.toUpperCase().equals(cadena)) {
+            System.out.println("Cadena en mayúsculas.");
+        } else {
+            System.out.println("Toda la cadena no está en mayúsculas.");
+        }
+    }
+}
