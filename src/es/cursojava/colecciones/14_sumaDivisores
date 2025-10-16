@@ -1,0 +1,23 @@
+import java.util.Scanner;
+public class Main
+{
+	public static void main (String[] args)
+	{
+
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Número: ");
+		int num = sc.nextInt();
+
+		int sumaDiv = 0;
+		for(int div = 1; div <= num / 2; div++)	
+		{
+			if(num % div == 0)
+			{
+				sumaDiv += div;
+			}
+		}
+		System.out.println("La suma de los divisores de " + num + " es "
+			+ sumaDiv + ".");
+		
+	}
+}
