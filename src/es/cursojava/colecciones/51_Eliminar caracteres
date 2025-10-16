@@ -1,0 +1,22 @@
+package eliminar.a;
+
+import java.util.Scanner;
+
+public class Main
+{
+
+	public static void main(String[] args)
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Cadena: ");
+		String cadena = sc.nextLine();
+		sc.close();
+		for (int i = 0; i < cadena.length(); i++)
+		{
+			if(cadena.charAt(i) != 'a')
+			{
+				System.out.print(cadena.charAt(i));
+			}
+		}
+	}
+}
