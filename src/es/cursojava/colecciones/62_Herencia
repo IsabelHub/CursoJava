@@ -1,0 +1,125 @@
+------------------------------------
+------------Conductor------------------------
+package conductores;
+
+import empleado.Empleado;
+
+public class Conductor extends Empleado
+{
+
+	private double totalKilometros;
+	private String ciudadesRecorridas;
+
+	public Conductor(String nombre, String telefono)
+	{
+		super(nombre, telefono);
+		totalKilometros = 0;
+		ciudadesRecorridas = "";
+	}
+
+	public void sumarKilometros(double kilometros)
+	{
+		totalKilometros += kilometros;
+	}
+
+	public double getTotalKilometros()
+	{
+		return totalKilometros;
+	}
+
+	public void pasaPorCiudad(String ciudad)
+	{
+		if(ciudadesRecorridas.length() == 0)
+		{
+			ciudadesRecorridas = ciudad;
+		}
+		else
+		{
+			ciudadesRecorridas += "," + ciudad;
+		}
+	}
+
+	public String[] getCiudadesRecorridas()
+	{
+		return  ciudadesRecorridas.split(",");
+	}
+
+}
+
+--------------------------------------------
+---------------Main-----------------------------
+package conductores;
+
+public class Main
+{
+
+	public static void main(String[] args)
+	{
+		Conductor conductor = new Conductor("conductor", "213122");
+
+		conductor.sumarKilometros(234.6);
+		conductor.sumarKilometros(100);
+
+		conductor.pasaPorCiudad("Madrid");
+		conductor.pasaPorCiudad("Málaga");
+		conductor.pasaPorCiudad("Zaragoza");
+
+		System.out.println("Total kilómetros: " + conductor.getTotalKilometros());
+
+		System.out.println("Ciudades recorridas:");
+
+
+		for (String ciudad: conductor.getCiudadesRecorridas())
+		{
+			System.out.println("Nombre ciudad: " + ciudad);
+		}
+
+
+	}
+
+}
+--------------------------------------------
+---------------Main-----------------------------
+
+package empleado;
+
+public class Empleado
+{
+	private String nombre;
+	private String telefono;
+
+	private static int numeroEmpleados = 5;
+
+	public Empleado(String nombre, String telefono)
+	{
+		this.nombre = nombre;
+		this.telefono = telefono;
+
+		numeroEmpleados++;
+	}
+
+	public String getNombre()
+	{
+		return nombre;
+	}
+
+	public void setNombre(String nombre)
+	{
+		this.nombre = nombre;
+	}
+
+	public String getTelefono()
+	{
+		return telefono;
+	}
+
+	public void setTelefono(String telefono)
+	{
+		this.telefono = telefono;
+	}
+
+	public static int getNumeroEmpleados()
+	{
+		return numeroEmpleados;
+	}
+}
