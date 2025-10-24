@@ -1,0 +1,100 @@
+package formas;
+
+/**
+ * Clase abstracta que representa una forma geométrica con base y altura.
+ * Sirve como superclase para figuras como Triángulo y Rectángulo.
+ */
+public abstract class Forma {
+
+    private float base;
+    private float altura;
+
+    public Forma(float base, float altura) {
+        this.base = base;
+        this.altura = altura;
+    }
+
+    public float getBase() {
+        return base;
+    }
+
+    public float getAltura() {
+        return altura;
+    }
+
+    /**
+     * Método abstracto que debe ser implementado por las subclases
+     * para calcular el área de la forma.
+     */
+    public abstract float calcularArea();
+
+    @Override
+    public String toString() {
+        return "Forma con base " + base + " y altura " + altura;
+    }
+}
+---------------------------------------------------------
+--------------------Rectangulo------------------------------------
+package formas;
+
+public class Rectangulo extends Forma
+{
+
+	public Rectangulo(float base, float altura)
+	{
+		super(base, altura);
+	}
+
+	@Override
+	public float calcularArea()
+	{
+		return getBase() * getAltura();
+	}
+
+}
+----------------------------------------------------------
+--------------------Triangulo--------------------------------------
+package formas;
+
+public class Triangulo extends Forma
+{
+
+	public Triangulo(float base, float altura)
+	{
+		super(base, altura);
+	}
+
+
+
+	@Override
+	public float calcularArea()
+	{
+		return (getBase() * getAltura()) / 2;
+	}
+
+}
+--------------------------------------------------
+--------------------Main-------------------------------
+
+package formas;
+
+public class Main
+{
+
+	public static void main(String[] args)
+	{
+		// Forma forma = new Forma();
+		Triangulo triangulo = new Triangulo(10, 10);
+
+		System.out.println(triangulo.calcularArea());
+
+		Rectangulo rectangulo = new Rectangulo(10, 10);
+
+		System.out.println(rectangulo.calcularArea());
+
+
+	}
+
+}
+
+

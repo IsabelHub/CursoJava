@@ -1,0 +1,113 @@
+package calcula;
+
+public class Calcula
+{
+	private Calcula()
+	{
+
+	}
+
+	public static int mayor(int ... nums)
+	{
+		int max = Integer.MIN_VALUE;
+		for (int i = 0; i < nums.length; i++)
+		{
+			if(nums[i] > max)
+			{
+				max = nums[i];
+			}
+		}
+		return max;
+	}
+
+	public static double mayor(double ... nums)
+	{
+		double max = Double.MIN_VALUE;
+		for (int i = 0; i < nums.length; i++)
+		{
+			if(nums[i] > max)
+			{
+				max = nums[i];
+			}
+		}
+		return max;
+	}
+
+	public static String mayor(String ... cadenas)
+	{
+		String mayor = "";
+		for (int i = 0; i < cadenas.length; i++)
+		{
+			if(cadenas[i].length() > mayor.length())
+			{
+				mayor = cadenas[i];
+			}
+		}
+		return mayor;
+	}
+
+	public static int menor(int ... nums)
+	{
+		int min = Integer.MAX_VALUE;
+		for (int i = 0; i < nums.length; i++)
+		{
+			if(nums[i] < min)
+			{
+				min = nums[i];
+			}
+		}
+		return min;
+	}
+
+	public static double menor(double ... nums)
+	{
+		double min = Double.MAX_VALUE;
+		for (int i = 0; i < nums.length; i++)
+		{
+			if(nums[i] < min)
+			{
+				min = nums[i];
+			}
+		}
+		return min;
+	}
+
+	public static String menor(String ... cadenas)
+	{
+		String menor = cadenas[0];
+
+		for (int i = 1; i < cadenas.length; i++)
+		{
+			if(cadenas[i].length() < menor.length())
+			{
+				menor = cadenas[i];
+			}
+		}
+		return menor;
+	}
+
+}
+
+----------------------------------------------
+--------------------main--------------------------
+
+package calcula;
+
+public class Main
+{
+
+	public static void main(String[] args)
+	{
+		System.out.println(Calcula.mayor(2,3,56,7,0));
+		System.out.println(Calcula.mayor(new int[] {22,4,5,6,7}));
+		int[] numeros = {45,67,89,43};
+		System.out.println(Calcula.mayor(numeros));
+
+		System.out.println(Calcula.menor("sdfsdf","d","sddf"));
+		System.out.println(Calcula.mayor("sdfsdf","d","sddf"));
+		
+		System.out.println(Calcula.menor(4.5,55.8));
+
+	}
+
+}

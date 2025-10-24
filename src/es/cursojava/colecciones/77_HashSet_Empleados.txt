@@ -1,0 +1,175 @@
+package hashset.empleados;
+
+public class Empleado
+{
+	private String nombre;
+	private double sueldo;
+	public Empleado(String nombre, double sueldo)
+	{
+		super();
+		this.nombre = nombre;
+		this.sueldo = sueldo;
+	}
+	public String getNombre()
+	{
+		return nombre;
+	}
+	public double getSueldo()
+	{
+		return sueldo;
+	}
+	@Override
+	public int hashCode()
+	{
+		return nombre.toLowerCase().hashCode();
+	}
+	@Override
+	public boolean equals(Object obj)
+	{
+		/*
+		Empleado empleado = (Empleado) obj;
+		if(empleado.getNombre().equalsIgnoreCase(nombre))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+		*/
+		return ((Empleado)obj).getNombre().equalsIgnoreCase(nombre);
+	}
+
+
+}
+
+
+
+
+---------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------
+
+
+package hashset.empleados;
+
+import java.util.HashSet;
+import java.util.Scanner;
+
+public class Main
+{
+
+	private static HashSet<Empleado> hsEmpleados;
+	private static Scanner sc;
+
+	public static void main(String[] args)
+	{
+		hsEmpleados = new HashSet<>();
+		sc = new Scanner(System.in);
+
+		char opcion = '0';
+
+		while(opcion != '7')
+		{
+			mostrarMenu();
+			opcion = sc.nextLine().charAt(0);
+			switch (opcion)
+			{
+				case '1' :
+					introducirEmpleado();
+					break;
+				case '2':
+					listarEmpleados();
+					break;
+				case '3':
+					eliminarEmpleado();
+					break;
+				case '4':
+					hsEmpleados.clear();
+					break;
+				case '5':
+					System.out.println(hsEmpleados.size());
+					break;
+				case '6':
+					buscarEmpleado();
+					break;
+				case '7':
+					break;
+				default :
+					System.out.println("Opción no válida.");
+					break;
+			}
+		}
+		sc.close();
+	}
+
+	private static void mostrarMenu()
+	{
+		System.out.println("Opciones\n" +
+		"1.-Introducir empleado\n" +
+		"2.-Listar empleados\n" +
+		"3.-Eliminar empleado\n" +
+		"4.-Borrar todos\n" +
+		"5.-Mostrar número empleados\n" +
+		"6.-Buscar empleado\n" +
+		"7.-Salir");
+	}
+
+	private static void listarEmpleados()
+	{
+		System.out.println("Empleados:\n---------");
+		for (Empleado empleado: hsEmpleados)
+		{
+			System.out.println(empleado.getNombre() + " " + empleado.getSueldo());
+		}
+	}
+
+	private static void eliminarEmpleado()
+	{
+		System.out.print("Eliminar: ");
+		String empleadoElimiar = sc.nextLine();
+		if(hsEmpleados.remove(new Empleado(empleadoElimiar, -1)))
+		{
+			System.out.println("Eliminado.");
+		}
+		else
+		{
+			System.out.println("No existe.");
+		}
+	}
+
+	private static void introducirEmpleado()
+	{
+		System.out.print("Nombre: ");
+		String nombre = sc.nextLine();
+
+		System.out.print("Sueldo: ");
+		Double sueldo = Double.parseDouble(sc.nextLine());
+
+		if(hsEmpleados.add(new Empleado(nombre, sueldo)))
+		{
+			System.out.println("Empleado añadido.");
+		}
+		else
+		{
+			System.out.println("Ya existe.");
+		}
+	}
+
+	private static void buscarEmpleado()
+	{
+		System.out.print("Buscar: ");
+		String empleadoBuscar = sc.nextLine();
+
+		if(hsEmpleados.contains(new Empleado(empleadoBuscar, -1)))
+		{
+			System.out.println("Existe.");
+		}
+		else
+		{
+			System.out.println("No existe.");
+		}
+	}
+
+}
+

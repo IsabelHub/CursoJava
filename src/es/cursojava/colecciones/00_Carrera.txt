@@ -1,0 +1,111 @@
+Crear un programa que simule una carrera de caballos. Cada caballo tiene características como nombre, velocidad y resistencia. Algunos caballos pueden tener habilidades especiales. Al final, se muestra el ranking de llegada.
+
+🧱 Estructura sugerida
+------------------------------------------------
+------------------------------------------------
+1. Clase abstracta Caballo
+
+java
+public abstract class Caballo {
+    protected String nombre;
+    protected int velocidadBase;
+    protected int resistencia;
+
+    public Caballo(String nombre, int velocidadBase, int resistencia) {
+        this.nombre = nombre;
+        this.velocidadBase = velocidadBase;
+        this.resistencia = resistencia;
+    }
+
+    public String getNombre() { return nombre; }
+
+    public abstract int calcularVelocidadFinal();
+}
+------------------------------------------------
+------------------------------------------------
+2. Interface Especial
+java
+public interface Especial {
+    int bonificacion();
+}
+3. Subclases concretas
+java
+public class CaballoNormal extends Caballo {
+    public CaballoNormal(String nombre, int velocidadBase, int resistencia) {
+        super(nombre, velocidadBase, resistencia);
+    }
+
+    @Override
+    public int calcularVelocidadFinal() {
+        return velocidadBase + (resistencia / 2);
+    }
+}
+
+public class CaballoConEsteroides extends Caballo implements Especial {
+    public CaballoConEsteroides(String nombre, int velocidadBase, int resistencia) {
+        super(nombre, velocidadBase, resistencia);
+    }
+
+    @Override
+    public int calcularVelocidadFinal() {
+        return velocidadBase + resistencia + bonificacion();
+    }
+
+    @Override
+    public int bonificacion() {
+        return 10; // bonificación fija
+    }
+}
+------------------------------------------------
+------------------------------------------------
+4. Clase Carrera
+java
+import java.util.*;
+
+public class Carrera {
+    private Set<Caballo> caballos = new LinkedHashSet<>();
+    private Map<Caballo, Integer> resultados = new TreeMap<>(Comparator.comparingInt(resultados::get).reversed());
+
+    public void agregarCaballo(Caballo c) {
+        caballos.add(c);
+    }
+
+    public void correr() {
+        for (Caballo c : caballos) {
+            int velocidad = c.calcularVelocidadFinal();
+            resultados.put(c, velocidad);
+        }
+    }
+
+    public void mostrarResultados() {
+        System.out.println(" Resultados de la carrera:");
+        for (Map.Entry<Caballo, Integer> entry : resultados.entrySet()) {
+            System.out.println(entry.getKey().getNombre() + " → " + entry.getValue() + " puntos");
+        }
+    }
+}
+------------------------------------------------
+------------------------------------------------
+5. Clase Main
+java
+public class Main {
+    public static void main(String[] args) {
+        Carrera carrera = new Carrera();
+
+        carrera.agregarCaballo(new CaballoNormal("Relámpago", 50, 30));
+        carrera.agregarCaballo(new CaballoConEsteroides("Trueno", 45, 40));
+        carrera.agregarCaballo(new CaballoNormal("Centella", 48, 35));
+
+        carrera.correr();
+        carrera.mostrarResultados();
+    }
+}
+------------------------------------------------
+------------------------------------------------
+🧠 ¿Qué conceptos practicas?
+Concepto	Aplicación en el ejercicio
+Herencia	CaballoNormal y CaballoConEsteroides heredan de Caballo
+Clase abstracta	Caballo define estructura común y método abstracto
+Interfaces	Especial define comportamiento adicional
+Colecciones	LinkedHashSet para mantener orden de inscripción, TreeMap para ranking
+Polimorfismo	calcularVelocidadFinal() se comporta distinto según el tipo de caballo

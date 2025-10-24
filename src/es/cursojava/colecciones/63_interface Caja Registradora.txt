@@ -1,0 +1,318 @@
+
+-------------------------------------------------
+--------------------ICajaRegistradora-------------------------------
+package cajaregistradora;
+
+public interface ICajaRegistradora
+{
+	/**
+	* @return Nombre de la caja registradora
+	*/
+	public String getNombre();
+	/**
+	* @return Número de tipos de moneda que hay en la caja.
+	*/
+	public int getNumTipoMonedas();
+	/**
+	* @param tipo
+	* @return Devuelve el número de unidades del tipo de moneda pasado como parámetro.
+	* -1 en el caso en el que el tipo de moneda no sea válido.
+	*/
+	public int getUnidadesTipoMoneda(double tipo);
+	/**
+	* Ingresa el número de monedas indicado y del tipo indicado.
+	* @param tipo
+	* @param unidades
+	* @return true si los parámetros son válidos, false si no
+	*/
+	public boolean meterMonedas(double tipo, int unidades);
+	/**
+	* Valida un tipo de moneda
+	* @param tipo
+	* @return true si es válida, false si no
+	*/
+	public boolean monedaValida(double tipo);
+	/**
+	* Extrae de la caja el número de unidades del tipo de moneda especificado
+	* @param tipo
+	* @param unidades
+	* @return true si ha sido posible, false en caso contrario.
+	*/
+	public boolean sacarMonedas(double tipo, int unidades);
+	/**
+	* Vacía la caja registradora.
+	*/
+	public void vaciarCajaRegistradora();
+	/**
+	* @return Devuelve un array con los tipos de monedas que tiene.
+	*/
+	public double[] getTiposDeMonedas();
+	/**
+	* @return Devuelve el saldo actual de la caja
+	*/
+	public double getSaldo();
+}
+
+-------------------------------------------------
+--------------------CajaRegistradora-------------------------------
+
+
+package cajaregistradora;
+
+public class CajaRegistradora implements ICajaRegistradora
+{
+
+	private String nombre;
+
+	private double[] tiposMoneda;
+
+	private int[] contMonedas;
+
+
+	public CajaRegistradora(String nombre, double[] tiposMoneda)
+	{
+		this.nombre = nombre;
+		this.tiposMoneda = tiposMoneda;
+		contMonedas = new int[tiposMoneda.length];
+	}
+
+
+	/**
+	 *
+	 * @param tipo
+	 * @return -1 si el tipo no existe, posición del array de contadores
+	 * en caso contrario.
+	 */
+	private int posicionBandeja(double tipo)
+	{
+		for (int i = 0; i < tiposMoneda.length; i++)
+		{
+			if(tipo == tiposMoneda[i])
+			{
+				return i;
+			}
+		}
+		return -1;
+	}
+
+
+	@Override
+	public String getNombre()
+	{
+		return nombre;
+	}
+
+	@Override
+	public int getNumTipoMonedas()
+	{
+		return tiposMoneda.length;
+	}
+
+	@Override
+	public int getUnidadesTipoMoneda(double tipo)
+	{
+		int posicionBandeja = posicionBandeja(tipo);
+		if(posicionBandeja == -1)
+		{
+			return -1;
+		}
+
+		return contMonedas[posicionBandeja];
+	}
+
+	@Override
+	public boolean meterMonedas(double tipo, int unidades)
+	{
+		int posicionBandeja = posicionBandeja(tipo);
+
+		if(posicionBandeja == -1 && unidades > 0)
+		{
+			return false;
+		}
+
+		contMonedas[posicionBandeja] += unidades;
+		return true;
+	}
+
+	@Override
+	public boolean monedaValida(double tipo)
+	{
+		if(posicionBandeja(tipo) == -1)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+
+	@Override
+	public boolean sacarMonedas(double tipo, int unidades)
+	{
+		int posicionMoneda = posicionBandeja(tipo);
+
+		if(posicionMoneda == -1 || unidades > contMonedas[posicionMoneda])
+		{
+			return false;
+		}
+
+		contMonedas[posicionMoneda] -= unidades;
+
+		return true;
+	}
+
+	@Override
+	public void vaciarCajaRegistradora()
+	{
+		for (int i = 0; i < contMonedas.length; i++)
+		{
+			contMonedas[i] = 0;
+		}
+	}
+
+	@Override
+	public double[] getTiposDeMonedas()
+	{
+		return tiposMoneda;
+	}
+
+	@Override
+	public double getSaldo()
+	{
+		double saldo = 0;
+
+		for (int i = 0; i < contMonedas.length; i++)
+		{
+			saldo += contMonedas[i] * tiposMoneda[i];
+		}
+
+		return saldo;
+	}
+
+}
+-------------------------------------------------
+--------------------CajaRegistradora-------------------------------
+package cajaregistradora;
+
+import java.util.Scanner;
+
+public class Main
+{
+
+	private static CajaRegistradora caja;
+	private static Scanner sc;
+
+	public static void main(String[] args)
+	{
+		final double[] EUROS = {0.05d, 0.1d, 0.2d, 0.5d, 1d, 2, 5d,
+				10d, 20d, 50d, 100d, 200d, 500d};
+
+
+		sc = new Scanner(System.in);
+
+		caja = new CajaRegistradora("1", EUROS);
+
+		int opcion = 0;
+
+		while(opcion != 6)
+		{
+			mostrarMenu();
+			opcion = sc.nextInt();
+			switch (opcion)
+			{
+				case 1 :
+					ingresarMonedas();
+					break;
+				case 2 :
+					listarContenido();
+					break;
+				case 3 :
+					mostrarSaldo();
+					break;
+				case 4 :
+					extraerMonedas();
+					break;
+				case 5 :
+					vaciarCaja();
+					break;
+				case 6 :
+					break;
+				default :
+					System.out.println("Opción no válida.");
+					break;
+			}
+		}
+	}
+
+	private static void mostrarMenu()
+	{
+		System.out.println( "1.­ Ingresar monedas.\n" +
+							"2.­ Listar contenido.\n" +
+							"3.­ Mostrar saldo.\n" +
+							"4.­ Extraer monedas.\n" +
+							"5.­ Vaciar caja.\n" +
+							"6.­ Salir."	);
+	}
+	private static void ingresarMonedas()
+	{
+		System.out.print("Tipo de moneda: ");
+		double tipo = sc.nextDouble();
+
+		if(caja.monedaValida(tipo))
+		{
+			System.out.print("Unidades a ingresar: ");
+			int unidades = sc.nextInt();
+			caja.meterMonedas(tipo, unidades);
+		}
+		else
+		{
+			System.out.println("Moneda no válida.");
+		}
+
+
+	}
+	private static void listarContenido()
+	{
+		System.out.println("Tipo\tUnidades\tImporte");
+
+		double[] tipos = caja.getTiposDeMonedas();
+		for (int i = 0; i < tipos.length; i++)
+		{
+			System.out.print(tipos[i] + "\t");
+			System.out.print(caja.getUnidadesTipoMoneda(tipos[i]) + "\t\t");
+			System.out.println(tipos[i] * caja.getUnidadesTipoMoneda(tipos[i]));
+		}
+	}
+
+	private static void mostrarSaldo()
+	{
+		System.out.println("Saldo: " + caja.getSaldo());
+	}
+	private static void extraerMonedas()
+	{
+		System.out.print("Tipo de moneda: ");
+		double tipo = sc.nextDouble();
+
+		if(caja.monedaValida(tipo))
+		{
+			System.out.print("Unidades a extraer: ");
+			int unidades = sc.nextInt();
+			if(!caja.sacarMonedas(tipo, unidades))
+			{
+				System.out.println("Solo hay " + caja.getUnidadesTipoMoneda(tipo)
+					+ " monedas.");
+			}
+		}
+		else
+		{
+			System.out.println("Moneda no válida.");
+		}
+
+	}
+	private static void vaciarCaja()
+	{
+		caja.vaciarCajaRegistradora();
+	}
+
+}

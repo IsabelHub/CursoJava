@@ -1,0 +1,149 @@
+package numero;
+
+public class Numero
+{
+	public final static int ASCENDENTE = 0;
+	public final static int DESCENDENTE = 1;
+
+	private Numero()
+	{
+		super();
+	}
+
+
+
+	public static boolean esPrimo(int num)
+	{
+		for (int div = 2; div <= num / 2; div++)
+		{
+			if(num % div == 0)
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public static boolean esPerfecto(int num)
+	{
+		return sumaDivisores(num) == num;
+	}
+
+	private static int sumaDivisores(int num)
+	{
+		int suma = 0;
+		for (int div = 1; div <= num / 2 ; div++)
+		{
+			if(num % div == 0)
+			{
+				suma += div;
+			}
+		}
+		return suma;
+	}
+
+
+
+	public static boolean esCapicua(int num)
+	{
+		String strNumero = num + "";
+		for (int i = 0; i < strNumero.length() / 2; i++)
+		{
+			if(strNumero.charAt(i) != strNumero.charAt(strNumero.length() - 1 - i))
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public static boolean sonAmigos(int num1, int num2)
+	{
+		return sumaDivisores(num1) == num2 && sumaDivisores(num2) == num1;
+	}
+
+	public static int[] extraeDivisores(int num)
+	{
+		int contDivisores = 0;
+		for (int div = 1; div <= num / 2; div++)
+		{
+			if(num % div == 0)
+			{
+				contDivisores++;
+			}
+		}
+
+		int[] divisores = new int[contDivisores];
+
+		int i = 0;
+		for (int div = 1; div <= num / 2; div++)
+		{
+			if(num % div == 0)
+			{
+				divisores[i] = div;
+				i++;
+			}
+		}
+		return divisores;
+	}
+
+	public static void duplica(int[] numeros)
+	{
+		for (int i = 0; i < numeros.length; i++)
+		{
+			numeros[i] *= 2;
+		}
+	}
+
+	/**
+	 * Ordena un array numérico de manera ascendente o desdencete
+	 * según se indique en la constante ASCENDENTE o DESCENDENTE.
+	 * @param numeros es el array a ordenar.
+	 * @param tipoOrden ASCENDENTE / DESCENDENTE
+	 */
+	public static void ordena(int[] numeros, int tipoOrden)
+	{
+		boolean ordenado = false;
+		int aux;
+		for (int i = 0; i < numeros.length - 1 && !ordenado; i++)
+		{
+			ordenado = true;
+			for (int j = 0; j < numeros.length - 1 - i; j++)
+			{
+				if((tipoOrden == ASCENDENTE && numeros[j] > numeros[j + 1])
+						|| (tipoOrden == DESCENDENTE && numeros[j] < numeros[j + 1]))
+				{
+					aux = numeros[j];
+					numeros[j] = numeros[j + 1];
+					numeros[j + 1] = aux;
+
+					ordenado = false;
+				}
+			}
+		}
+	}
+
+	public static int[] eliminaPrimos(int[] numeros)
+	{
+		int contNoPrimos = 0;
+		for (int i = 0; i < numeros.length; i++)
+		{
+			if(!esPrimo(numeros[i]))
+			{
+				contNoPrimos++;
+			}
+		}
+		int[] noPrimos = new int[contNoPrimos];
+		int j = 0;
+		for (int i = 0; i < noPrimos.length; i++)
+		{
+			if(!esPrimo(numeros[i]))
+			{
+				noPrimos[j] = numeros[i];
+				j++;
+			}
+		}
+		return noPrimos;
+	}
+
+}

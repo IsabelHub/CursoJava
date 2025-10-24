@@ -1,0 +1,229 @@
+package treemap.alumnos;
+
+import java.util.LinkedList;
+
+public class linklist
+{
+
+	public static void main(String[] args)
+	{
+		LinkedList<String> llStrings = new LinkedList<>();
+		llStrings.add("uno");
+		llStrings.add(3, "dos");
+		//aqui nos daria una excepcion xq ahora mismo no hay posicion 3
+		llStrings.addFirst("tres");
+		llStrings.addLast("cuatro");
+
+		llStrings.remove();//elimina el primero de la lista
+		llStrings.removeFirst() ;//lo mismo que el anterior, elimina el primero
+		llStrings.removeLast(); //elimina el ultimo
+		llStrings.remove(2);//tb corremos peligro que nos salga una excepcion del tipo INdexOutOfBOund
+		llStrings.remove("uno");//devuelve un boleano
+
+
+	}
+
+}
+
+-----------------------------------------------------------
+-----------------------------------------------------------
+package treemap.alumnos;
+
+public class Alumno
+{
+	private String nombre;
+	private Integer primeraEv;
+	private Integer segundaEv;
+	private Integer terceraEv;
+	public Alumno(String nombre)
+	{
+		super();
+		this.nombre = nombre;
+		primeraEv = null;
+		segundaEv = null;
+		terceraEv = null;
+	}
+	public String getNombre()
+	{
+		return nombre;
+	}
+	public Integer getPrimeraEv()
+	{
+		return primeraEv;
+	}
+	public void setPrimeraEv(Integer primeraEv)
+	{
+		this.primeraEv = primeraEv;
+	}
+	public Integer getSegundaEv()
+	{
+		return segundaEv;
+	}
+	public void setSegundaEv(Integer segundaEv)
+	{
+		this.segundaEv = segundaEv;
+	}
+	public Integer getTerceraEv()
+	{
+		return terceraEv;
+	}
+	public void setTerceraEv(Integer terceraEv)
+	{
+		this.terceraEv = terceraEv;
+	}
+}
+-------------------------------------------
+-------------------------------------------
+package treemap.alumnos;
+
+import java.util.*;
+
+
+public class Main
+{
+
+	private static Scanner sc;
+	private static TreeMap<Integer, Alumno> tmAlumnos;
+
+	public static void main(String[] args)
+	{
+		sc = new Scanner(System.in);
+		tmAlumnos = new TreeMap<>();
+
+		String opcion = "0";
+		while(!opcion.equals("6"))
+		{
+			mostrarMenu();
+			opcion = sc.nextLine();
+			switch (opcion)
+			{
+				case "1" :
+					listarAlumnos();
+					break;
+				case "2":
+					introducirAlumno();
+					break;
+				case "3":
+					introducirNota();
+					break;
+				case "4":
+					eliminarAlumno();
+					break;
+				case "5":
+					borrarTodos();
+					break;
+				case "6":
+					break;
+				default :
+					System.out.println("Opción no válida.");
+					break;
+			}
+
+		}
+	}
+
+
+	public static void borrarTodos()
+	{
+		tmAlumnos.clear();
+	}
+
+	public static void eliminarAlumno()
+	{
+		System.out.print("Expediente: ");
+		if(tmAlumnos.remove(Integer.parseInt(sc.nextLine())) == null)
+		{
+			System.out.println("No existe el expediente.");
+		}
+	}
+
+	public static void introducirAlumno()
+	{
+		System.out.print("Expediente: ");
+		Integer expediente = Integer.parseInt(sc.nextLine());
+		if(tmAlumnos.containsKey(expediente))
+		{
+			System.out.println("Ya existe.");
+		}
+		else
+		{
+			System.out.print("Nombre: ");
+			String nombre = sc.nextLine();
+			tmAlumnos.put(expediente, new Alumno(nombre));
+		}
+	}
+
+
+	private static void listarAlumnos()
+	{
+		System.out.println("Expediente\tNombre\tPrimera ev. Segunda ev. Tercera ev.");
+		System.out.println("-----------------------------------------------------------------");
+		Alumno alumno;
+		for(Integer expediente: tmAlumnos.keySet())
+		{
+			alumno = tmAlumnos.get(expediente);
+
+			System.out.println(expediente + "\t\t" + alumno.getNombre() +
+					"\t" + (alumno.getPrimeraEv() == null ? "-" : alumno.getPrimeraEv()) +
+					"\t\t" + (alumno.getSegundaEv() == null ? "-" : alumno.getSegundaEv()) +
+					"\t\t" + (alumno.getTerceraEv() == null ? "-" : alumno.getTerceraEv()));
+		}
+	}
+
+	private static void introducirNota()
+	{
+		System.out.print("Expediente: ");
+		Integer expediente = Integer.parseInt(sc.nextLine());
+		if(tmAlumnos.containsKey(expediente))
+		{
+			System.out.print("Evaluación (1, 2 ó 3):");
+			int evaluacion = Integer.parseInt(sc.nextLine());
+			int nota;
+			if(evaluacion == 1 || evaluacion == 2 || evaluacion == 3)
+			{
+				System.out.print("Nota: ");
+				nota = Integer.parseInt(sc.nextLine());
+				if(nota >= 0 && nota <= 10)
+				{
+					Alumno alumno = tmAlumnos.get(expediente);
+					if(evaluacion == 1)
+					{
+						alumno.setPrimeraEv(nota);
+					}
+					else if(evaluacion == 2)
+					{
+						alumno.setSegundaEv(nota);
+					}
+					else
+					{
+						alumno.setTerceraEv(nota);
+					}
+				}
+				else
+				{
+					System.out.println("Nota no válida.");
+				}
+			}
+			else
+			{
+				System.out.println("Evaluación no válida.");
+			}
+		}
+		else
+		{
+			System.out.println("Expediente no encontrado.");
+		}
+	}
+
+	private  static void mostrarMenu()
+	{
+		System.out.println("1.-Listar alumnos\n" +
+				"2.-Introducir alumno\n" +
+				"3.-Introducir nota de alumno\n" +
+				"4.-Eliminar alumno\n" +
+				"5.-Eliminar todos\n" +
+				"6.-Salir");
+	}
+
+}
+
