@@ -10,13 +10,14 @@ public class Main {
         // 2. Crear alumnos
         AlumnoHeredado alumno1 = new AlumnoHeredado("Ana", "12334","3 ESO");
         AlumnoHeredado alumno2 = new AlumnoHeredado("Luis", "4567","1 Primaria");
+        AlumnoHeredado alumno3 = new AlumnoHeredado("María", "4587","5 Primaria");
         // ... crear más alumnos
 
         // 3. Agregar alumnos a aulas
         colegio.agregarAlumnoAula("aula1", alumno1);
         colegio.agregarAlumnoAula("aula1", alumno2);
-        colegio.agregarAlumnoAula("aula2", new AlumnoHeredado("María", "4587","5 Primaria"));
-        // ... agregar alumnos a más aulas
+        colegio.agregarAlumnoAula("aula2", alumno3 );
+     
 
         // 4. Mostrar todas las aulas con sus alumnos
         colegio.mostrarAlumnosPorAula();

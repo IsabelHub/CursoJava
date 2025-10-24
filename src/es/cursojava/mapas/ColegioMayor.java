@@ -40,6 +40,12 @@ public class ColegioMayor {
 	 * @param alumno→Alumno que se desea agregar
 	 * @throws (si aplica)
 	 */
+	
+	public ColegioMayor() {
+		//lo inicializo aqui para evitar NullPointerException.
+	    this.aulas = new HashMap<>();
+	}
+
 	public void agregarAlumnoAula(String aula, Alumno alumno) {
 		
 	 // Verificar si el aula ya existe en el HashMap
@@ -79,8 +85,13 @@ public class ColegioMayor {
 	 */
 
 	public void contarAulas() {
-
+	    if (aulas == null || aulas.isEmpty()) {
+	        System.out.println("No hay aulas registradas en el colegio.");
+	    } else {
+	        System.out.println("El colegio tiene " + aulas.size() + " aulas.");
+	    }
 	}
+
 
 	/**
 	 * Para decir cuántos alumnos hay en cada aula
@@ -89,8 +100,18 @@ public class ColegioMayor {
 	 */
 
 	public void contarAlumnosPorAula() {
+	    if (aulas == null || aulas.isEmpty()) {
+	        System.out.println("No hay aulas registradas.");
+	        return;
+	    }
 
+	    for (Map.Entry<String, List<Alumno>> entrada : aulas.entrySet()) {
+	        String nombreAula = entrada.getKey();
+	        List<Alumno> alumnos = entrada.getValue();
+	        System.out.println("El aula " + nombreAula + " tiene " + alumnos.size() + " alumnos.");
+	    }
 	}
+
 
 	/**
 	 *  Mostrar los alumnos de una aula específica si existe
@@ -123,7 +144,36 @@ public class ColegioMayor {
 	 * @throws
 	 */
 	public void aulaConNotaMasAlta() {
+	    if (aulas == null || aulas.isEmpty()) {
+	        System.out.println("No hay aulas registradas.");
+	        return;
+	    }
 
+	    String aulaConMejorAlumno = null;
+	    Alumno mejorAlumno = null;
+	    double mejorNota = Double.MIN_VALUE;
+
+	    // Recorremos todas las aulas y sus alumnos
+	    for (Map.Entry<String, List<Alumno>> entrada : aulas.entrySet()) {
+	        String nombreAula = entrada.getKey();
+	        List<Alumno> alumnos = entrada.getValue();
+
+	        for (Alumno alumno : alumnos) {
+	            if (alumno.getNotaMedia() > mejorNota) {
+	                mejorNota = alumno.getNotaMedia();
+	                mejorAlumno = alumno;
+	                aulaConMejorAlumno = nombreAula;
+	            }
+	        }
+	    }
+
+	    if (mejorAlumno != null) {
+	        System.out.println("El alumno con la mejor nota media es " + mejorAlumno.getNombre()
+	                + " (" + mejorNota + ") y está en el aula " + aulaConMejorAlumno + ".");
+	    } else {
+	        System.out.println("No hay alumnos registrados.");
+	    }
 	}
+
 
 }
