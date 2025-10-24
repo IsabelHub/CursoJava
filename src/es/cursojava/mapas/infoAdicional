@@ -1,0 +1,224 @@
+package es.cursojava.mapas;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import es.cursojava.inicio.Colegio.Alumno;
+
+public class Colegio {
+
+    private String nombre;
+    private String direccion;
+    private Map<String, List<Alumno>> aulas;
+
+    // Constructor
+    public Colegio(String nombre, String direccion) {
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.aulas = new HashMap<>();
+    }
+
+    // Getters y Setters
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public Map<String, List<Alumno>> getAulas() {
+        return aulas;
+    }
+
+    // Método para agregar un alumno a un aula
+    public void agregarAlumnoAula(String aula, Alumno alumno) {
+        aulas.putIfAbsent(aula, new java.util.ArrayList<>());
+        aulas.get(aula).add(alumno);
+    }
+
+    // Calcular la nota media de TODOS los alumnos del colegio
+    public double calcularNotaMediaColegio() {
+        int totalAlumnos = 0;
+        double sumaNotas = 0;
+
+        for (List<Alumno> alumnos : aulas.values()) {
+            for (Alumno alumno : alumnos) {
+                sumaNotas += alumno.getNotaMedia();
+                totalAlumnos++;
+            }
+        }
+
+        return totalAlumnos > 0 ? sumaNotas / totalAlumnos : 0;
+    }
+}
+
+
+---------------------------
+package es.cursojava.mapas;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import es.cursojava.inicio.Colegio.Alumno;
+
+public class MainColegios {
+
+    public static void main(String[] args) {
+        // Crear 3 colegios
+        Colegio colegio1 = new Colegio("Colegio San Juan", "Calle Mayor 12");
+        Colegio colegio2 = new Colegio("Colegio Los Olivos", "Avda. Andalucía 45");
+        Colegio colegio3 = new Colegio("Colegio El Prado", "Calle Luna 8");
+
+        // Crear alumnos de ejemplo
+        Alumno a1 = new Alumno("Ana", "García", 8.5);
+        Alumno a2 = new Alumno("Luis", "Pérez", 7.9);
+        Alumno a3 = new Alumno("Lucía", "Martín", 9.1);
+        Alumno a4 = new Alumno("Pedro", "Sánchez", 6.8);
+        Alumno a5 = new Alumno("Sofía", "Díaz", 9.5);
+
+        // Agregar alumnos a aulas en los colegios
+        colegio1.agregarAlumnoAula("Aula1", a1);
+        colegio1.agregarAlumnoAula("Aula1", a2);
+        colegio1.agregarAlumnoAula("Aula2", a3);
+
+        colegio2.agregarAlumnoAula("AulaA", a4);
+        colegio2.agregarAlumnoAula("AulaB", a5);
+
+        colegio3.agregarAlumnoAula("ClaseRoja", a1);
+        colegio3.agregarAlumnoAula("ClaseRoja", a4);
+        colegio3.agregarAlumnoAula("ClaseAzul", a5);
+
+        // Meter los colegios en una lista
+        List<Colegio> listaColegios = new ArrayList<>();
+        listaColegios.add(colegio1);
+        listaColegios.add(colegio2);
+        listaColegios.add(colegio3);
+
+        // ============================================
+        // 🔹 Recorrer la lista y mostrar datos
+        // ============================================
+        System.out.println("===== DATOS DE LOS COLEGIOS =====");
+        for (Colegio col : listaColegios) {
+            System.out.println("\nColegio: " + col.getNombre());
+            System.out.println("Dirección: " + col.getDireccion());
+
+            for (String nombreAula : col.getAulas().keySet()) {
+                System.out.println("  Aula: " + nombreAula);
+
+                List<Alumno> alumnos = col.getAulas().get(nombreAula);
+                for (Alumno al : alumnos) {
+                    System.out.println("     - " + al.getNombre() + " " + al.getApellido()
+                            + " | Nota media: " + al.getNotaMedia());
+                }
+            }
+        }
+
+        // ============================================
+        // 🔹 Buscar el colegio con mejor nota media
+        // ============================================
+        Colegio mejorColegio = null;
+        double mejorNota = 0;
+
+        for (Colegio col : listaColegios) {
+            double media = col.calcularNotaMediaColegio();
+            if (mejorColegio == null || media > mejorNota) {
+                mejorColegio = col;
+                mejorNota = media;
+            }
+        }
+
+        System.out.println("\n===== RESULTADO =====");
+        System.out.println("El colegio con la nota media más alta es: "
+                + mejorColegio.getNombre() + " (" + mejorNota + ")");
+    }
+}
+-------------------------------------------
+Opción 1 — Reutilizando mi clase actual:
+
+package es.cursojava.mapas;
+
+import java.util.*;
+import es.cursojava.inicio.Colegio.Alumno;
+
+public class Colegio {
+
+    private String nombre;
+    private String direccion;
+    private Map<String, List<Alumno>> aulas;
+
+    public Colegio(String nombre, String direccion) {
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.aulas = new HashMap<>();
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public Map<String, List<Alumno>> getAulas() {
+        return aulas;
+    }
+
+    // Todos los métodos que ya tenías en ColegioMayor ↓
+    public void agregarAlumnoAula(String aula, Alumno alumno) {
+        if (!aulas.containsKey(aula)) {
+            aulas.put(aula, new ArrayList<>());
+        }
+        aulas.get(aula).add(alumno);
+    }
+
+    public void mostrarAlumnosPorAula() {
+        for (Map.Entry<String, List<Alumno>> entrada : aulas.entrySet()) {
+            String nombreAula = entrada.getKey();
+            System.out.println("Aula: " + nombreAula);
+            for (Alumno alumno : entrada.getValue()) {
+                System.out.println("   " + alumno);
+            }
+        }
+    }
+
+    public double calcularNotaMediaColegio() {
+        double total = 0;
+        int count = 0;
+        for (List<Alumno> lista : aulas.values()) {
+            for (Alumno a : lista) {
+                total += a.getNotaMedia();
+                count++;
+            }
+        }
+        return count > 0 ? total / count : 0;
+    }
+}
+
+-----------------------
+
+opcion 2:
+public class ColegioMayor {
+    private List<Colegio> colegios;
+
+    public ColegioMayor() {
+        colegios = new ArrayList<>();
+    }
+
+    public void agregarColegio(Colegio c) {
+        colegios.add(c);
+    }
+
+    public void mostrarDatosColegios() {
+        for (Colegio c : colegios) {
+            System.out.println("Colegio: " + c.getNombre());
+            c.mostrarAlumnosPorAula();
+        }
+    }
+}
+---------------------------------------
+
+
+
