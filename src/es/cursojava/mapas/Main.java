@@ -4,34 +4,33 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		// 1. Crear instancia del colegio
-        ColegioMayor colegio = new ColegioMayor();
+		//Ejercicio 1
 
-        // 2. Crear alumnos
-        AlumnoHeredado alumno1 = new AlumnoHeredado("Ana", "12334","3 ESO");
-        AlumnoHeredado alumno2 = new AlumnoHeredado("Luis", "4567","1 Primaria");
-        AlumnoHeredado alumno3 = new AlumnoHeredado("María", "4587","5 Primaria");
-        // ... crear más alumnos
+		// 1. Crear instancia del colegio1
+		ColegioMayor colegio1 = new ColegioMayor("CFTIC","Avenida de las Arcas");
 
-        // 3. Agregar alumnos a aulas
-        colegio.agregarAlumnoAula("aula1", alumno1);
-        colegio.agregarAlumnoAula("aula1", alumno2);
-        colegio.agregarAlumnoAula("aula2", alumno3 );
-     
+		// 2. Crear alumnos
+		AlumnoHeredado alumno1 = new AlumnoHeredado("Pedro", "12334", "3 ESO");
+		AlumnoHeredado alumno2 = new AlumnoHeredado("Martin", "4567", "1 Primaria");
+		AlumnoHeredado alumno3 = new AlumnoHeredado("Carla", "4587", "5 Primaria");
+		// ... crear más alumnos
 
-        // 4. Mostrar todas las aulas con sus alumnos
-        colegio.mostrarAlumnosPorAula();
+		// 3. Agregar alumnos a aulas
+		colegio1.agregarAlumnoAula("aula1", alumno1);
+		colegio1.agregarAlumnoAula("aula1", alumno2);
+		colegio1.agregarAlumnoAula("aula2", alumno3);
 
-        // 5. Pedir nombre de aula para mostrar alumnos (opcional)
-        // Puede ser con Scanner para pedir input al usuario
+		// 4. Mostrar todas las aulas con sus alumnos
+		colegio1.mostrarAlumnosPorAula();
+		colegio1.contarAulas();
 
-        // 6. Buscar aula con alumno de nota más alta (si implementaste el método)
-        // colegio.mostrarAulaConMejorAlumno();
+		// 5. Pedir nombre de aula para mostrar alumnos (opcional)
+		// Puede ser con Scanner para pedir input al usuario
 
-        // Puedes agregar más interacciones según tus métodos
-    }
-
-
-	
+		// 6. Buscar aula con alumno de nota más alta
+		colegio1.aulaConNotaMasAlta();
+		
+		
+	}
 
 }

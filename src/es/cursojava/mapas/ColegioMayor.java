@@ -12,6 +12,8 @@ import org.slf4j.LoggerFactory;
 
 import es.cursojava.inicio.Colegio.Alumno;
 
+
+
 /**
  * Esta clase representa un colegio que contiene varias aulas, y permite
  * gestionar los alumnos dentro de esas aulas.
@@ -27,11 +29,43 @@ import es.cursojava.inicio.Colegio.Alumno;
  */
 public class ColegioMayor {
 
+	private static final Logger logger = LoggerFactory.getLogger(ColegioMayor.class);
 	// Mapa que relaciona el nombre del aula con la lista de alumnos
 	// La clave (String) es el nombre del aula, por ejemplo "aula1".
-	//El valor (List<Alumno>) es la lista de alumnos que pertenecen a esa aula.
+	// El valor (List<Alumno>) es la lista de alumnos que pertenecen a esa aula.
 	private HashMap<String, List<Alumno>> aulas;
-	private static final Logger logger = LoggerFactory.getLogger(ColegioMayor.class);
+	private String nombre;
+	private String direccion;
+
+	public ColegioMayor(String nombre, String direccion) {
+		this.nombre = nombre;
+		this.direccion = direccion;
+		this.aulas = new HashMap<>();
+	}
+
+	public HashMap<String, List<Alumno>> getAulas() {
+		return aulas;
+	}
+
+	public void setAulas(HashMap<String, List<Alumno>> aulas) {
+		this.aulas = aulas;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
 
 	/**
 	 * Agrega un alumno a un aula específica. Si el aula no existe, se crea.
@@ -41,11 +75,6 @@ public class ColegioMayor {
 	 * @throws (si aplica)
 	 */
 	
-	public ColegioMayor() {
-		//lo inicializo aqui para evitar NullPointerException.
-	    this.aulas = new HashMap<>();
-	}
-
 	public void agregarAlumnoAula(String aula, Alumno alumno) {
 		
 	 // Verificar si el aula ya existe en el HashMap
