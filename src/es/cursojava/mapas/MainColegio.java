@@ -1,6 +1,6 @@
 package es.cursojava.mapas;
 
-public class Main {
+public class MainColegio {
 
 	public static void main(String[] args) {
 		
